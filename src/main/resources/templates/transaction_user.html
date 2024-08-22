@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction Notification</title>
+  <!--[if mso]><style type="text/css">body, table, td, a { font-family: Arial, Helvetica, sans-serif !important; }</style><![endif]-->
+  <style>
+  	hr {
+	    margin-top: 1rem;
+	    margin-bottom: 1rem;
+	    border: 0;
+	    border-top: 1px solid rgba(0, 0, 0, .1);
+	}
+  </style>
+</head>
+
+<body style="font-family: Helvetica, Arial, sans-serif; margin: 0px; padding: 0px; background-color: #ffffff;">
+  <table role="presentation"
+    style="width: 100%; border-collapse: collapse; border: 0px; border-spacing: 0px; font-family: Arial, Helvetica, sans-serif; background-color: rgb(239, 239, 239);">
+    <tbody>
+      <tr>
+        <td align="center" style="padding: 1rem 2rem; vertical-align: top; width: 100%;">
+          <table role="presentation" style="max-width: 600px; border-collapse: collapse; border: 0px; border-spacing: 0px; text-align: left;">
+            <tbody>
+              <tr>
+                <td style="padding: 40px 0px 0px;">
+                  <div style="padding-bottom: 20px;">
+                    <img th:src="${logoUrl}" th:alt="${companyName}" style="width: 56px;">
+                  </div>
+                  <div style="padding: 20px; background-color: rgb(255, 255, 255);">
+                    <div style="color: rgb(0, 0, 0); text-align: left;">
+                      <h1 style="margin: 1rem 0">
+                      	<span th:text="${companyName}"></span>
+                      	<span th:text="${transactionDirection}"></span> Transaction Notification                      
+                      </h1>
+                      <p style="padding-bottom: 16px">Dear <span th:text="${userName}"></span>,</p>
+
+                      <p style="padding-bottom: 16px">We are informing you that a <span th:text="${transactionDirection}"></span> transaction occurred on your account with us. The details
+                        of this transaction are shown below:</p>
+                      <hr>
+
+                      <table border="0" cellpadding="5" cellspacing="0">
+                        <tbody>
+                          <tr>
+                            <th>Account Number:</th>
+                            <td th:text="${accountId}"></td>
+                          </tr>
+                          <tr>
+                            <th>Description:</th>
+                            <td th:text="${transactionType}"></td>
+                          </tr>
+                          <tr>
+                            <th><span th:text="${transactionDirection}"></span> Amount:</th>
+                            <td th:text="${transactionAmount}"></td>
+                          </tr>
+                          <tr th:if="${transactionChargeAmount != null}">
+                            <th>Charge Amount <small>(inclusive)</small></sup>:</th>
+                            <td th:text="${transactionChargeAmount}"></td>
+                          </tr>
+                          <tr>
+                            <th>Date & Time:</th>
+                            <td th:text="${transactionDate}"></td>
+                          </tr>
+                          <tr>
+                            <th>Notes:</th>
+                            <td th:text="${transactionNotes}"></td>
+                          </tr>
+                          <tr>
+                            <th>Document Number:</th>
+                            <td th:text="${transactionId}"></td>
+                          </tr>
+                          <tr th:if="${transactionExternalBankName != null}">
+                            <th>Bank Name:</th>
+                            <td th:text="${transactionExternalBankName}"></td>
+                          </tr>
+                          <tr th:if="${transactionExternalAccountIdAndCurrency != null}">
+                            <th>Bank Account:</th>
+                            <td th:text="${transactionExternalAccountIdAndCurrency}"></td>
+                          </tr>
+                          <tr th:if="${transactionExternalAccountName != null}">
+                            <th>Account Holder Name:</th>
+                            <td th:text="${transactionExternalAccountName}"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <hr>
+
+                      <p style="padding-bottom: 16px">
+                      	The balances on this account as of <span th:text="${transactionDate}"></span> are as follows;                   
+                      </p>
+                      <table border="0" cellpadding="5" cellspacing="0">
+                        <tbody>
+                          <tr>
+                            <th>Current Balance:</th>
+                            <td th:text="${accountBalance}"></td>
+                          </tr>
+                          <tr>
+                            <th>Available Balance:</th>
+                            <td th:text="${accountBalance}"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <hr style="padding-bottom: 16px">
+
+                      <p style="padding-bottom: 16px">Best regards,<br><span th:text="${companyName}"></span> Team</p>
+                    </div>
+                  </div>
+                  <div style="padding-top: 20px; color: rgb(153, 153, 153); text-align: center;">
+                    <p style="padding-bottom: 16px">Made with ♥ in Lagos</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>
