@@ -112,7 +112,7 @@ src/main/resources/secrets.properties
 
 # JWT Private & Public Keys
 # =====================
-.idea/
+src/main/resources/certs/
 
 # IDEA related settings
 # =====================
