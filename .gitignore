@@ -97,22 +97,11 @@ $RECYCLE.BIN/
 # ==========================
 .env
 
-# Include all .properties files globally
-!*.properties
-
 # Exclude specific .properties files from tracking
 src/main/resources/exchange.rate.properties
 src/main/resources/mail.properties
 src/main/resources/mail-dev.properties
 src/main/resources/secrets.properties
-
-# Include the src/main/resources directory explicitly
-!src/main/resources/
-!src/main/resources/**/*.properties
-
-# Ignore all .yml files except application.yml (if used)
-*.yml
-!src/main/resources/application.yml
 
 # JWT Private & Public Keys
 # =====================
