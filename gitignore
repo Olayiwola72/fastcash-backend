@@ -106,10 +106,6 @@ src/main/resources/mail.properties
 src/main/resources/mail-dev.properties
 src/main/resources/secrets.properties
 
-# Include the src/main/resources directory explicitly
-!src/main/resources/
-!src/main/resources/**/*.properties
-
 # Ignore all .yml files except application.yml (if used)
 *.yml
 !src/main/resources/application.yml
