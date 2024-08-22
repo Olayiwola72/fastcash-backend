@@ -1,0 +1,132 @@
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Virtual machine crash logs, core dumps, and other system files
+hs_err_pid*
+replay_pid*
+
+# Spring Boot specific files
+# ==========================
+/target/
+/out/
+
+# Maven specific files
+# ====================
+.mvn/
+/.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/maven-wrapper.properties
+
+# Gradle specific files
+# =====================
+.gradle/
+/build/
+!gradle-wrapper.jar
+!**/src/main/**/gradle-wrapper.properties
+
+# Eclipse specific files
+# ======================
+.springBeans
+/.classpath
+/.project
+/.settings/
+/*.prefs
+
+# Intellij IDEA specific files
+# ============================
+/.idea/
+/*.iml
+*.ipr
+*.iws
+/out/
+
+# VS Code specific files
+# =======================
+.vscode/
+
+# Mac OS specific files
+# ======================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows specific files
+# =======================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux specific files
+# =====================
+*~
+.nfs*
+
+# Temporary files
+# ===============
+/tmp/
+/*.tmp
+/*.temp
+*.swp
+
+# Logs and Database
+# =================
+/logs/
+/*.log
+/*.sql
+/*.sqlite
+
+# Environment variable files
+# ==========================
+.env
+
+# Exclude specific .properties files from tracking
+src/main/resources/exchange.rate.properties
+src/main/resources/mail.properties
+src/main/resources/mail-dev.properties
+src/main/resources/secrets.properties
+
+# JWT Private & Public Keys
+# =====================
+src/main/resources/certs/
+
+# IDEA related settings
+# =====================
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Ignore the local .env files used for local development
+.env.local
+.env.*.local
+
+# Heroku files
+# ==============
+/Procfile
+
+# Miscellaneous
+# =====================
+/*.bak
+*.swp
+
+# Frontend
+# ==========================
+/moneytransfer-app/
