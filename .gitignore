@@ -101,10 +101,10 @@ $RECYCLE.BIN/
 !*.properties
 
 # Exclude specific .properties files from tracking
-/src/main/resources/exchange.rate.properties
-/src/main/resources/mail.properties
-/src/main/resources/mail-dev.properties
-/src/main/resources/secrets.properties
+src/main/resources/exchange.rate.properties
+src/main/resources/mail.properties
+src/main/resources/mail-dev.properties
+src/main/resources/secrets.properties
 
 # Include the src/main/resources directory explicitly
 !src/main/resources/
