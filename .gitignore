@@ -127,6 +127,10 @@ src/main/resources/certs/
 /*.bak
 *.swp
 
-# Frontend
+# Frontend assets generated automatically
 # ==========================
-/moneytransfer-app/
+src/main/resources/static/
+
+# Frontend source code
+# ==========================
+src/main/resources/client/

@@ -97,7 +97,7 @@ public class SecurityConfig {
 		this.delegatedBearerTokenAccessDeniedHandler = delegatedBearerTokenAccessDeniedHandler;
 		this.accountUpdateAuthorizationManager = accountUpdateAuthorizationManager;
 		this.userUpdateAuthorizationManager = userUpdateAuthorizationManager;
-	}	
+	}
 	
 	@Bean
 	@Order(1)
@@ -133,19 +133,18 @@ public class SecurityConfig {
 	@Bean
 	@Order(2)
 	public SecurityFilterChain otherSecurityFilterChain(HttpSecurity http) throws Exception {			
-		return http
-				.securityMatcher(authWhitelistUrls)
-				.authorizeHttpRequests(auth -> auth
-		                .requestMatchers(authWhitelistUrls).permitAll() // Exclude URLs
-		                .anyRequest()	              
-		                .authenticated()
-					)
-				 .csrf(csrf -> csrf
-				            .ignoringRequestMatchers(authWhitelistUrls)
-				            .disable()
-				       )
-				.headers(headers -> headers.frameOptions(FrameOptionsConfig::disable)) // This is for H2 Browser Console Access
-				.build();
+	    return http
+	        .authorizeHttpRequests(auth -> auth
+	            .requestMatchers(authWhitelistUrls).permitAll() // Permit whitelisted URLs
+	            .requestMatchers("/**/*.{js,html,css,svg,png,jpg,jpeg,gif,ico}").permitAll() // Permit static resources
+	            .anyRequest().permitAll() // Allow SPA fallback
+	        )
+	        .csrf(csrf -> csrf
+	            .ignoringRequestMatchers(authWhitelistUrls)
+	            .disable()
+	        )
+	        .headers(headers -> headers.frameOptions(FrameOptionsConfig::disable)) // Disable frame options for H2 console access
+	        .build();
 	}
 	
 	@Bean
