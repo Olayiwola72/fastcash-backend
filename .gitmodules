@@ -1,0 +1,3 @@
+[submodule "src/main/client"]
+	path = src/main/client
+	url = https://github.com/Olayiwola72/fastcash-frontend
