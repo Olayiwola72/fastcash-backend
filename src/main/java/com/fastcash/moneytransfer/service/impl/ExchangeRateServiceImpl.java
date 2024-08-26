@@ -48,13 +48,20 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
 	
 	private ExchangeRateResponse fetchExchangeRateData(String url) throws ExchangeRateException {
         try {
-            ExchangeRateResponse response = restTemplate.getForObject(url, ExchangeRateResponse.class);
+			ExchangeRateResponse response = restTemplate.getForObject(url, ExchangeRateResponse.class);
 
-            if (response != null && ExchangeRateApiResponseType.success.toString().equalsIgnoreCase(response.result())) {
-                return response;
-            } else {
-                throw new ExchangeRateException(
+            if (response != null) {
+            	if(ExchangeRateApiResponseType.success.toString().equalsIgnoreCase(response.result())) {
+            		return response;
+            	}
+            	
+            	throw new ExchangeRateException (
                 	messageSource.getMessage("ExchangeRetrievalFailure", null, LocaleContextHolder.getLocale())	+" "+ response.errorType()
+                );
+                
+            } else {
+            	throw new ExchangeRateException (
+                	messageSource.getMessage("ExchangeRetrievalFailure", null, LocaleContextHolder.getLocale())
                 );
             }
         } catch (Exception e) {

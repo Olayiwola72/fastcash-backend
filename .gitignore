@@ -134,3 +134,5 @@ src/main/resources/static/
 # Frontend source code
 # ==========================
 src/main/resources/client/
+/.apt_generated/
+/.apt_generated_tests/
