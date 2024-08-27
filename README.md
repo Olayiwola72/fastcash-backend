@@ -16,9 +16,13 @@ Fast Cash is a next-generation online bank that automates wallet creation and fa
 ## **Tech Stack**
 ### **Front-End:**
 - **React**
+- **React Redux**
 - **TypeScript**
-- **HTML/SCSS**
+- **Bootstrap**
+- **Font Awesome**
+- **HTML5/SCSS**
 - **Vite**
+- **NPM**
 ### **Back-End:**
 - **Spring Boot**
 - **Thymeleaf**
@@ -83,7 +87,7 @@ Check out the live  of Fast Cash here:
 
 http://fastcash.com/test
 
-<p align=”center”>
+<p align="center">
    <img
       width="500"
       height="300"
@@ -97,3 +101,6 @@ Contributions to this project are welcome. Please follow the standard GitHub for
 ## **License**
 N/A
 
+<img alt="React" src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
+
+![](https://img.shields.io/badge/Code-React-informational?style=flat&logo=react&color=61DAFB)
