@@ -13,14 +13,16 @@
 - [License](#license)
 ## **🌱 Project Overview**
 Fast Cash is a next-generation online bank that automates wallet creation and facilitates effortless transactions. Whether handling local or international payments, Fast Cash aims to provide users with a streamlined, secure, and user-friendly experience.
+
 ## **💼 Tech Stack**
 ### **Front-End:**
-- **React**
-- **React Redux**
-- **TypeScript**
+- **![](https://img.shields.io/badge/Code-React-informational?style=flat&logo=react&color=61DAFB)**
+- **![](https://img.shields.io/badge/Code-Redux-informational?style=flat&logo=Redux&color=764ABC)**
+- **![](https://img.shields.io/badge/Code-TypeScript-informational?style=flat&logo=TypeScript&color=F7DF1E)**
 - **Bootstrap**
 - **Font Awesome**
-- **HTML5/SCSS**
+- **![](https://img.shields.io/badge/Code-HTML5-informational?style=flat&logo=HTML5&color=E34F26)**
+- **HTML5/SASS**
 - **Vite**
 - **NPM**
 ### **Back-End:**
@@ -32,6 +34,8 @@ Fast Cash is a next-generation online bank that automates wallet creation and fa
 - **Maven**
 ### **Database:**
 - **MySQL**
+![](https://img.shields.io/badge/Code-MySQL-informational?style=flat&logo=MySQL&color=336791)
+
 ## **Getting Started**
 To set up the project locally:
 
