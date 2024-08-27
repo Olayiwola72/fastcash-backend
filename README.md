@@ -1,6 +1,6 @@
 # **Fast Cash Portfolio Project**
 **Fast Cash** is a cutting-edge digital banking solution designed to simplify and enhance financial management by providing users with seamless and automatic wallet creation for both local and international payments. This project demonstrates my expertise as a Senior Software Engineer 💻,, integrating robust backend and frontend technologies to deliver a comprehensive and responsive web application.
-## **Table of Contents**
+## **🔭 Table of Contents**
 - [Project Overview](#project-overview)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
@@ -11,9 +11,9 @@
 - [Demo](#demo)
 - [Contributing](#contributing)
 - [License](#license)
-## **Project Overview**
+## **🌱 Project Overview**
 Fast Cash is a next-generation online bank that automates wallet creation and facilitates effortless transactions. Whether handling local or international payments, Fast Cash aims to provide users with a streamlined, secure, and user-friendly experience.
-## **Tech Stack**
+## **💼 Tech Stack**
 ### **Front-End:**
 - **React**
 - **React Redux**
@@ -35,31 +35,31 @@ Fast Cash is a next-generation online bank that automates wallet creation and fa
 ## **Getting Started**
 To set up the project locally:
 
-1. **Clone the Repository:**
+1. **✅ Clone the Repository:**
 
    git clone https://github.com/Olayiwola72/fastcash-backend
 
-1. **Submodule Initialization:**
+1. **✅ Submodule Initialization:**
 
    The frontend code is included as a submodule within the backend repository. Navigate to src/main/resources/client to interact with the front end.
 
    git submodule update --init --recursive
 
-1. **Install Dependencies and Start the Application:**
+1. **✅ Install Dependencies and Start the Application:**
 
    The project leverages Vite & Maven to bundle both React and Spring Boot together. Use the provided script to install all dependencies and run the application.
 
    ./prod.sh
 
 The application will be accessible at: <http://localhost:8086/>
-## **Usage Instructions**
+## **✅ Usage Instructions**
 Once the application is running, open your browser and navigate to <http://localhost:8086/>. Create a user account and start exploring the features of Fast Cash.
-## **API Documentation**
+## **✅ API Documentation**
 For detailed API information and testing, access the Swagger UI:
 
 <http://localhost:8086/swagger-ui>
 
-**Features**
+**✅ Features**
 
 Fast Cash is packed with a variety of features aimed at providing a comprehensive digital banking experience:
 
@@ -77,12 +77,12 @@ Fast Cash is packed with a variety of features aimed at providing a comprehensiv
 - **Transaction List PDF and Export Actions**
 - **Responsive Web Design**
 
-## **Testing**
+## **✅ Testing**
 Backend tests can be run from the root folder using the command:
 
 ./mvnw test
 
-## **Demo**
+## **✅ Demo**
 Check out the live  of Fast Cash here:
 
 http://fastcash.com/test
@@ -96,10 +96,12 @@ http://fastcash.com/test
    />
 </p>
 
-## **Contributing**
+## **✅ Contributing**
 Contributions to this project are welcome. Please follow the standard GitHub fork, branch, and pull request workflow. Feel free to raise issues or feature requests to enhance this project.
 ## **License**
 N/A
+
+## 📈 GitHub Stats 
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Olayiwola72&layout=compact)](https://github.com/Olayiwola72)
 
