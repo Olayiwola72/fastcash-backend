@@ -21,15 +21,17 @@ Fast Cash is a next-generation online bank that automates wallet creation and fa
 - **![](https://img.shields.io/badge/Code-TypeScript-informational?style=flat&logo=TypeScript&color=F7DF1E)**
 - **![](https://img.shields.io/badge/Style-Bootstrap-informational?style=flat&logo=Bootstrap&color=7952B3)**
 - **![](https://img.shields.io/badge/Style-CSS3-informational?style=flat&logo=CSS3&color=1572B6)**
-- **![](https://img.shields.io/badge/Code-HTML5-informational?style=flat&logo=HTML5&color=E34F26)**
-- **![](https://img.shields.io/badge/Tools-Vite-informational?style=flat&logo=Vite&color=F24E1E)**
+- **![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)**
+- **!![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)**
 - **![](https://img.shields.io/badge/Tools-NPM-informational?style=flat&logo=NPM&color=CB3837)**
 - **![](https://img.shields.io/badge/Tools-Git-informational?style=flat&logo=Git&color=F05032)**
 - **![](https://img.shields.io/badge/Tools-GitHub-informational?style=flat&logo=GitHub&color=181717)**
 ### **Back-End:**
 - **![](https://img.shields.io/badge/Code-Spring_Boot-informational?style=flat&logo=Spring-Boot&color=DB7093)**
 - **![](https://img.shields.io/badge/Code-Spring_JPA-informational?style=flat&logo=Spring-JPA&color=CC342D)**
+- **![]![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white)**
 - **![](https://img.shields.io/badge/Code-Spring_Security-informational?style=flat&logo=Spring-Security&color=CC0000)**
+- **![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)**
 - **![](https://img.shields.io/badge/Test-JUnit5-informational?style=flat&logo=JUnit5&color=003B57)**
 - **![](https://img.shields.io/badge/Tools-Maven-informational?style=flat&logo=Maven&color=430098)**
 - **![](https://img.shields.io/badge/Code-Thymeleaf-informational?style=flat&logo=Thymeleaf&color=E34F26)**
@@ -59,7 +61,7 @@ To set up the project locally:
 The application will be accessible at: <http://localhost:8086/>
 ## **✅ Usage Instructions**
 Once the application is running, open your browser and navigate to <http://localhost:8086/>. Create a user account and start exploring the features of Fast Cash.
-## **✅ API Documentation**
+## **📝 API Documentation**
 For detailed API information and testing, access the Swagger UI:
 
 <http://localhost:8086/swagger-ui>
@@ -112,8 +114,33 @@ N/A
 
 ### 🤝 Connect with me:
 
-<a href="https://www.linkedin.com/in/yushi95/"><img align="left" src="https://raw.githubusercontent.com/yushi1007/yushi1007/main/images/linkedin.svg" alt="Yu Shi | LinkedIn" width="21px"/></a>
-<a href="https://instagram.com/yushi.95"><img align="left" src="https://raw.githubusercontent.com/yushi1007/yushi1007/main/images/instagram.svg" alt="Yu Shi | Instagram" width="21px"/></a>
-<a href="https://yushi95.medium.com/"><img align="left" src="https://raw.githubusercontent.com/yushi1007/yushi1007/main/images/medium.svg" alt="Yu Shi | Medium" width="21px"/></a>
+<a href="https://www.linkedin.com/in/yushi95/">
+   <img 
+      align="left" 
+      src="https://raw.githubusercontent.com/yushi1007/yushi1007/main/images/linkedin.svg" 
+      alt="Olayiwola Akinnagbe | LinkedIn" 
+      width="21px"
+   />
+</a>
+
+<a href="https://instagram.com/yushi.95">
+   <img 
+      align="left" 
+      src="https://raw.githubusercontent.com/yushi1007/yushi1007/main/images/instagram.svg" 
+      alt="Olayiwola Akinnagbe | Instagram" 
+      width="21px"
+      />
+</a>
+
+<a href="https://yushi95.medium.com/">
+   <img 
+      align="left" 
+      src="https://raw.githubusercontent.com/yushi1007/yushi1007/main/images/medium.svg" 
+      alt="Olayiwola Akinnagbe | Medium" 
+      width="21px"
+   />
+</a>
+
 </br>
+
 - 💬 If you have any question/feedback, please do not hesitate to reach out to me!
