@@ -139,8 +139,4 @@ N/A
    />
 </a>
 
-<a href="" title="curriculum vitae icons">Curriculum vitae icons created by kerismaker - Flaticon</a>
-
-</br>
-
 - 💬 If you have any question/feedback, please do not hesitate to reach out to me!
