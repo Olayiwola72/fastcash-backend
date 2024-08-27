@@ -112,32 +112,34 @@ N/A
 
 ### 🤝 Connect with me:
 
-<a href="https://www.linkedin.com/in/yushi95/">
+<a href="https://www.linkedin.com/in/olayiwola-akinnagbe-371686172/">
    <img 
       align="left" 
-      src="https://raw.githubusercontent.com/yushi1007/yushi1007/main/images/linkedin.svg" 
+      src="https://github.com/Olayiwola72/my-profile/blob/main/linkedin.png" 
       alt="Olayiwola Akinnagbe | LinkedIn" 
       width="21px"
    />
 </a>
 
-<a href="https://instagram.com/yushi.95">
+<a href="https://twitter.com/OlayiwolaAkinn1">
    <img 
       align="left" 
-      src="https://raw.githubusercontent.com/yushi1007/yushi1007/main/images/instagram.svg" 
-      alt="Olayiwola Akinnagbe | Instagram" 
+      src="https://github.com/Olayiwola72/my-profile/blob/main/twitter.png" 
+      alt="Olayiwola Akinnagbe | Twitter" 
       width="21px"
       />
 </a>
 
-<a href="https://yushi95.medium.com/">
+<a href="https://drive.google.com/file/d/10uXqISOnCIMsoLgmxOJor1kdrrflcnAy/view?usp=sharing">
    <img 
       align="left" 
-      src="https://raw.githubusercontent.com/yushi1007/yushi1007/main/images/medium.svg" 
-      alt="Olayiwola Akinnagbe | Medium" 
+      src="https://github.com/Olayiwola72/my-profile/blob/main/cv.png" 
+      alt="Olayiwola Akinnagbe | Resume" 
       width="21px"
    />
 </a>
+
+<a href="" title="curriculum vitae icons">Curriculum vitae icons created by kerismaker - Flaticon</a>
 
 </br>
 
