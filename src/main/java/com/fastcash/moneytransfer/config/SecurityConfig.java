@@ -134,16 +134,34 @@ public class SecurityConfig {
 	@Order(2)
 	public SecurityFilterChain otherSecurityFilterChain(HttpSecurity http) throws Exception {			
 	    return http
+	    	.securityMatcher(authWhitelistUrls)
 	        .authorizeHttpRequests(auth -> auth
 	            .requestMatchers(authWhitelistUrls).permitAll() // Permit whitelisted URLs
-	            .requestMatchers("/**/*.{js,html,css,svg,png,jpg,jpeg,gif,ico}").permitAll() // Permit static resources
-	            .anyRequest().permitAll() // Allow SPA fallback
+	            .anyRequest()
+	            .authenticated()
 	        )
 	        .csrf(csrf -> csrf
 	            .ignoringRequestMatchers(authWhitelistUrls)
 	            .disable()
 	        )
 	        .headers(headers -> headers.frameOptions(FrameOptionsConfig::disable)) // Disable frame options for H2 console access
+	        .build();
+	}
+	
+	@Bean
+	@Order(3)
+	public SecurityFilterChain homePageSecurityFilterChain(HttpSecurity http) throws Exception {			
+	    return http
+	        .authorizeHttpRequests(auth -> auth
+	            .requestMatchers("/**").permitAll() // Permit whitelisted URLs
+	            .requestMatchers("/**/*.{js,html,css,svg,png,jpg,jpeg,gif,ico}").permitAll() // Permit static resources
+	            .anyRequest()
+	            .permitAll() // Allow SPA fallback
+	        )
+	        .csrf(csrf -> csrf
+	            .ignoringRequestMatchers(authWhitelistUrls)
+	            .disable()
+	        )
 	        .build();
 	}
 	

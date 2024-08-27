@@ -12,6 +12,7 @@ import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 public class CorsConfig {
+	
 	private final List<String> allowedOrigins;
 	
 	public CorsConfig(
@@ -33,4 +34,5 @@ public class CorsConfig {
         
         return new CorsFilter(source);
     }
+	
 }

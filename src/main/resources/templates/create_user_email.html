@@ -6,6 +6,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to <span th:text="${companyName}"></span></title>
   <!--[if mso]><style type="text/css">body, table, td, a { font-family: Arial, Helvetica, sans-serif !important; }</style><![endif]-->
+  
+  <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            text-align: left;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            font-size: 20px;
+        }
+        hr {
+		    margin-top: 1rem;
+		    margin-bottom: 1rem;
+		    border: 0;
+		    border-top: 1px solid rgba(0, 0, 0, .1);
+		}
+    </style>
 </head>
 
 <body style="font-family: Helvetica, Arial, sans-serif; margin: 0px; padding: 0px; background-color: #ffffff;">
@@ -27,15 +57,61 @@
                     <div style="color: rgb(0, 0, 0); text-align: left;">
                       <h1 style="margin: 1rem 0">Welcome to <span th:text="${companyName}"></span></h1>
                       <p style="padding-bottom: 16px">Dear <span th:text="${userName}"></span>,</p>
+                      
+                      <p style="padding-bottom: 16px">Welcome aboard!</p>
+                      
                       <p style="padding-bottom: 16px">
-                      	Thank you for signing up to <span th:text="${companyName}"></span>. We're really happy to have you onboard! Click the link below to login to your account:
-                       </p>
+                      	We're thrilled to have you as part of the 
+                      	<span th:text="${companyName}"></span>
+                      	family. Your journey towards seamless financial management starts now! We’ve successfully created your wallets, and you’re all set to get started.     	
+                      </p>
+                      
+                      <!-- Check if accounts list is not empty -->
+					    <div th:if="${accounts.size() > 0}">
+					    	<h1>Here are your wallet details:</h1>
+					        <table>
+						        <thead>
+						            <tr>
+						                <th></th>
+						                <th>Wallet Number</th>
+						                <th>Currency</th>
+						            </tr>
+						        </thead>
+						        <tbody>
+						            <tr th:each="account, iterStat : ${accounts}">
+						                <td th:text="${iterStat.index + 1}"></td>
+						                <td th:text="${account.accountNumber}"></td>
+						                <td th:text="${account.currency}"></td>
+						            </tr>
+						        </tbody>
+						    </table>
+					    </div>
+					    
+					  <p style="padding-bottom: 16px">
+                      	We’re committed to providing you with the best possible service, ensuring that your financial needs are met with ease and efficiency.
+                      </p>
+                      
+                       <p style="padding-bottom: 16px">
+                      	To access your account, simply click the button below:
+                      </p>
+                       
                       <p style="padding-bottom: 16px; cursor: pointer">
                       	<a th:href="${loginUrl}" target="_blank"
                           style="padding: 12px 24px; border-radius: 4px; color: #FFF; background: #2B52F5;display: inline-block;margin: 0.5rem 0;">
                           Login to your account
                         </a>
                       </p>
+                      
+                      <hr/>
+                      
+                      <p style="padding-bottom: 16px">
+                      	If you have any questions or need assistance, feel free to reach out. We’re here to help, every step of the way.
+                      </p>
+                      
+                      <p style="padding-bottom: 16px">
+                      	Thank you for choosing <span th:text="${companyName}"></span>!
+                      </p>
+                      
                       <p style="padding-bottom: 16px">Best regards,<br><span th:text="${companyName}"></span> Team</p>
                     </div>
                   </div>

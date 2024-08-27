@@ -2,22 +2,29 @@ package com.fastcash.moneytransfer.dto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.thymeleaf.TemplateEngine;
 
+import com.fastcash.moneytransfer.config.MessageSourceConfig;
 import com.fastcash.moneytransfer.constant.Constants;
 import com.fastcash.moneytransfer.enums.AuthMethod;
 import com.fastcash.moneytransfer.enums.Currency;
@@ -34,6 +41,7 @@ import com.fastcash.moneytransfer.model.UserAccount;
 import com.fastcash.moneytransfer.service.AccountService;
 import com.fastcash.moneytransfer.service.PasswordService;
 import com.fastcash.moneytransfer.service.impl.EmailNotificationService;
+import com.fastcash.moneytransfer.util.DateFormatter;
 
 @DataJpaTest
 @Import({
@@ -42,11 +50,18 @@ import com.fastcash.moneytransfer.service.impl.EmailNotificationService;
     PasswordService.class,
     EmailNotificationService.class,
 	TemplateEngine.class,
+	MessageSourceConfig.class
 })
 class UserResponseTest {
 	
 	@Autowired
     private UserRequestMapper requestMapper;
+	
+	@InjectMocks
+	private DateFormatter dateFormatter;
+	
+	@Mock
+    private MessageSource messageSource;
 	
 	@MockBean
     private JavaMailSender javaMailSender;
@@ -56,6 +71,9 @@ class UserResponseTest {
 
     @BeforeEach
     void setUp() {
+    	LocaleContextHolder.setLocale(Locale.US);
+    	when(messageSource.getMessage("date.at", null, LocaleContextHolder.getLocale())).thenReturn("at");
+    	
         // Set up User instance
         user = new User();
         user.setId(1L);
@@ -152,6 +170,7 @@ class UserResponseTest {
         assertEquals(user.getAuthMethod(), userResponse.getAuthMethod());
         assertEquals(user.getCreatedAt(), userResponse.getCreatedAt());
         assertEquals(user.getUserType(), userResponse.getUserType());
+        assertEquals(user.getPreferredLanguage(), userResponse.getPreferredLanguage());
         assertEquals(user.getVersion(), userResponse.getVersion());
         assertEquals(user.getAccounts(), userResponse.getAccounts());
         assertEquals(user.getFamilyName(), userResponse.getFamilyName());
@@ -181,6 +200,7 @@ class UserResponseTest {
         assertEquals(admin.getAuthMethod(), userResponse.getAuthMethod());
         assertEquals(admin.getCreatedAt(), userResponse.getCreatedAt());
         assertEquals(admin.getUserType(), userResponse.getUserType());
+        assertEquals(admin.getPreferredLanguage(), userResponse.getPreferredLanguage());
         assertEquals(admin.getVersion(), userResponse.getVersion());
         assertEquals(admin.getInternalAccounts(), userResponse.getInternalAccounts());
         assertEquals(admin.getChargeAccounts(), userResponse.getChargeAccounts());

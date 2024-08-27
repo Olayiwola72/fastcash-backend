@@ -2,12 +2,19 @@ package com.fastcash.moneytransfer.dto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Locale;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 import com.fastcash.moneytransfer.enums.Currency;
 import com.fastcash.moneytransfer.enums.TransactionType;
@@ -17,13 +24,24 @@ import com.fastcash.moneytransfer.model.InternalChargeAccount;
 import com.fastcash.moneytransfer.model.MoneyTransfer;
 import com.fastcash.moneytransfer.model.User;
 import com.fastcash.moneytransfer.model.UserAccount;
+import com.fastcash.moneytransfer.util.DateFormatter;
 
 class MoneyTransferResponseTest {
+	
+	@InjectMocks
+	private DateFormatter dateFormatter;
+	
+	@Mock
+    private MessageSource messageSource;
 
     private MoneyTransfer moneyTransfer;
 
     @BeforeEach
     void setUp() {
+    	MockitoAnnotations.openMocks(this);
+    	LocaleContextHolder.setLocale(Locale.US);
+    	when(messageSource.getMessage("date.at", null, LocaleContextHolder.getLocale())).thenReturn("at");
+    	
     	User user = new User();
     	Admin admin = new Admin();
     	

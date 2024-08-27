@@ -1,6 +1,7 @@
 package com.fastcash.moneytransfer.service.impl;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
@@ -17,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.context.MessageSource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.thymeleaf.TemplateEngine;
 
@@ -54,6 +56,9 @@ class EmailNotificationServiceTest {
     
     @Mock
     private UserRepository userRepository;
+    
+    @Mock
+    private MessageSource messageSource;
 
     private User user;
 	private UserAccount userAccount;
@@ -89,12 +94,14 @@ class EmailNotificationServiceTest {
         accountStatement.setTransactionId("TX12345");
         
         notificationContext = new NotificationContext(notificationType, user);
+        
+    	when(messageSource.getMessage(anyString(), any(), any())).thenReturn("email subject");
 	}
 
     @Test
     void testSendUserCreationEmail() throws Exception {
         // Arrange
-        when(mockTemplateEngine.process(eq("create_user_email"), any())).thenReturn(htmlContent);
+    	when(mockTemplateEngine.process(eq("create_user_email"), any())).thenReturn(htmlContent);
         MimeMessage mimeMessage = mock(MimeMessage.class);
         when(mockMailSender.createMimeMessage()).thenReturn(mimeMessage);
         

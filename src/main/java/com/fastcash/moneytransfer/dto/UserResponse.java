@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 import com.fastcash.moneytransfer.enums.AuthMethod;
@@ -54,6 +55,10 @@ public class UserResponse {
     @NotNull
     @Schema(accessMode = Schema.AccessMode.READ_ONLY, description = "user type", example = "INTERNAL")
     private UserType userType;
+    
+    @NotNull
+    @Schema(accessMode = Schema.AccessMode.READ_WRITE, description = "user's langauge", example = "en_US")
+    private Locale preferredLanguage;
 	
 	private int version;
 	
@@ -104,6 +109,7 @@ public class UserResponse {
     	this.authMethod = baseUser.getAuthMethod();
     	this.createdAt = baseUser.getCreatedAt();
     	this.userType = baseUser.getUserType();
+    	this.preferredLanguage = baseUser.getPreferredLanguage();
     	this.version = baseUser.getVersion();
     	
     	if(baseUser instanceof User) {
@@ -158,6 +164,10 @@ public class UserResponse {
 
 	public UserType getUserType() {
 		return userType;
+	}
+	
+	public Locale getPreferredLanguage() {
+		return preferredLanguage;
 	}
 	
 	public int getVersion() {

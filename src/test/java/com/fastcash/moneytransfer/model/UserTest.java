@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 import com.fastcash.moneytransfer.enums.AuthMethod;
 import com.fastcash.moneytransfer.enums.UserRoles;
@@ -30,6 +31,7 @@ class UserTest {
         assertTrue(user.getAccounts().isEmpty()); // Accounts should be an empty list
         assertTrue(user.getTransfers().isEmpty()); // Transfer should be an empty list
         assertTrue(user.getAccountStatements().isEmpty()); // UserAccount Statement should be an empty list
+        assertEquals(LocaleContextHolder.getLocale(), user.getPreferredLanguage()); // preferredLanguage should not be null
         assertNotNull(user.getCreatedAt()); // CreatedAt should not be null
         assertFalse(user.isDeleted()); // deleted should be false initially
         assertNull(user.getLastLoginDate());

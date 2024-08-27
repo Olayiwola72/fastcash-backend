@@ -1,8 +1,10 @@
 package com.fastcash.moneytransfer.service.impl;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Primary;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -33,7 +35,8 @@ public class EmailNotificationService implements EmailNotifiable {
     private final FailedNotificationRepository failedNotificationRepository;
     private final NotificationContextRepository notificationContextRepository;
     private final UserRepository userRepository;
-	private final String companyName;
+    private final MessageSource messageSource;
+    private final String companyName;
     private final String companyPage;
     private final String logoUrl;
     private final String resetPasswordUrl;
@@ -44,6 +47,7 @@ public class EmailNotificationService implements EmailNotifiable {
             FailedNotificationRepository failedNotificationRepository,
             NotificationContextRepository notificationContextRepository,
             UserRepository userRepository,
+            MessageSource messageSource,
             @Value("${app.companyName}") String companyName,
             @Value("${app.companyPage}") String companyPage,
             @Value("${app.logoUrl}") String logoUrl,
@@ -54,6 +58,7 @@ public class EmailNotificationService implements EmailNotifiable {
             this.failedNotificationRepository = failedNotificationRepository;
             this.notificationContextRepository = notificationContextRepository;
             this.userRepository = userRepository;
+            this.messageSource = messageSource;
             this.companyName = companyName;
             this.companyPage = companyPage;
             this.logoUrl = logoUrl;
@@ -63,58 +68,69 @@ public class EmailNotificationService implements EmailNotifiable {
     @Async
     @Override
     public void sendUserCreationNotification(NotificationContext notificationContext) {
-        sendNotification(notificationContext, "Welcome to " + companyName, "create_user_email");
+        String subject = messageSource.getMessage("user.creation.subject", new Object[]{companyName}, getLocale(notificationContext));
+        sendNotification(notificationContext, subject, "create_user_email");
     }
     
     @Async
     @Override
     public void sendUserLoginNotification(NotificationContext notificationContext) {
-        sendNotification(notificationContext, companyName + " Login Confirmation", "login_user_email");
+        String subject = messageSource.getMessage("user.login.subject", new Object[]{companyName}, getLocale(notificationContext));
+        sendNotification(notificationContext, subject, "login_user_email");
     }
     
     @Async
     @Override
     public void sendUserUpdateNotification(NotificationContext notificationContext) {
-        sendNotification(notificationContext, "Profile Update Confirmation", "update_user_email");
+        String subject = messageSource.getMessage("user.update.subject", null, getLocale(notificationContext));
+        sendNotification(notificationContext, subject, "update_user_email");
     }
     
     @Async
     @Override
     public void sendUserPasswordResetNotification(NotificationContext notificationContext) {
-        sendNotification(notificationContext, "Password Change Notification", "password_reset_user_email");
+        String subject = messageSource.getMessage("user.password.reset.subject", null, getLocale(notificationContext));
+        sendNotification(notificationContext, subject, "password_reset_user_email");
     }
     
     @Async
     @Override
     public void sendUserPasswordChangeNotification(NotificationContext notificationContext) {
-        sendNotification(notificationContext, "Your password has been updated", "password_change_user_email");
+        String subject = messageSource.getMessage("user.password.change.subject", null, getLocale(notificationContext));
+        sendNotification(notificationContext, subject, "password_change_user_email");
     }
 
     @Async
     @Override
     public void sendUserDeletionNotification(NotificationContext notificationContext) {
-        sendNotification(notificationContext, "Data Erasure Request", "delete_user_email");
+        String subject = messageSource.getMessage("user.deletion.subject", null, getLocale(notificationContext));
+        sendNotification(notificationContext, subject, "delete_user_email");
     }
     
     @Async
     @Override
     public void sendUserAccountUpdateNotification(NotificationContext notificationContext) {
-    	sendNotification(notificationContext, "Wallet Update Confirmation", "update_account_email");
+        String subject = messageSource.getMessage("user.account.update.subject", null, getLocale(notificationContext));
+        sendNotification(notificationContext, subject, "update_account_email");
     }
     
-	@Override
-	@Async
-	public void sendUserAccountTransferNotification(NotificationContext notificationContext) {
-		sendNotification(notificationContext, companyName + " Transaction Alert ["+notificationContext.getTransactionDirection()+": "+notificationContext.getTransactionAmount()+"]", "transaction_user");
-		
-	}
+    @Override
+    @Async
+    public void sendUserAccountTransferNotification(NotificationContext notificationContext) {
+        String subject = messageSource.getMessage(
+            "user.account.transfer.subject",
+            new Object[]{companyName, notificationContext.getTransactionDirection(), notificationContext.getTransactionAmount()},
+            getLocale(notificationContext)
+        );
+        sendNotification(notificationContext, subject, "transaction_user");
+    }
 
     private void sendNotification(NotificationContext notificationContext, String subject, String template) {
-    	try {
-    		String htmlContent = generateHtmlContent(notificationContext, template);
+        try {
+            String htmlContent = generateHtmlContent(notificationContext, template);
             send(notificationContext.getUser().getEmail(), subject, htmlContent);
         } catch (Exception e) {
-        	saveFailedNotification(notificationContext, subject, template, e.getMessage());
+            saveFailedNotification(notificationContext, subject, template, e.getMessage());
         }
     }
     
@@ -134,6 +150,7 @@ public class EmailNotificationService implements EmailNotifiable {
         Context context = new Context();
         
         context.setVariable("userName", notificationContext.getName()); // Set the variable for Thymeleaf template
+        context.setVariable("accounts", notificationContext.getUser().getAccounts()); // Set the variable for Thymeleaf template
         context.setVariable("companyName", companyName); // Pass companyName to template
         context.setVariable("companyPage", companyPage); // Pass companyPage to template
         context.setVariable("logoUrl", logoUrl); // Pass logoUrl to template
@@ -147,8 +164,8 @@ public class EmailNotificationService implements EmailNotifiable {
         context.setVariable("transactionType", notificationContext.getTransactionType()); // Pass transactionType to template
         context.setVariable("transactionAmount", notificationContext.getTransactionAmount()); // Pass transactionAmount to template
         context.setVariable("transactionDate", notificationContext.getTransactionDate()); // Pass transactionDate to template
-        context.setVariable("transactionNotes", notificationContext.getTransactionNotes()); // Pass transactionAmount to template
-        context.setVariable("transactionId", notificationContext.getTransactionId()); // Pass transactionDate to template
+        context.setVariable("transactionNotes", notificationContext.getTransactionNotes()); // Pass transactionNotes to template
+        context.setVariable("transactionId", notificationContext.getTransactionId()); // Pass transactionId to template
         context.setVariable("transactionChargeAmount", notificationContext.getTransactionChargeAmount()); // Pass transactionChargeAmount to template
         context.setVariable("transactionExternalBankName", notificationContext.getTransactionExternalBankName()); // Pass transactionExternalBankName to template
         context.setVariable("transactionExternalAccountName", notificationContext.getTransactionExternalAccountName()); // Pass transactionExternalAccountName to template
@@ -163,8 +180,7 @@ public class EmailNotificationService implements EmailNotifiable {
     @Override
     @Transactional
     public void saveFailedNotification(NotificationContext notificationContext, String subject, String content, String reason) {
-    	
-    	// Flush the persistence context to ensure all entities are fully persisted
+        // Flush the persistence context to ensure all entities are fully persisted
         userRepository.flush();
         
         notificationContextRepository.save(notificationContext);
@@ -173,18 +189,21 @@ public class EmailNotificationService implements EmailNotifiable {
         failedNotificationRepository.save(failedNotification);
     }
 
-	@Override
-	public void retryNotification(FailedNotification failedNotification) throws MessagingException, IOException {
-		NotificationContext notificationContext = failedNotification.getNotificationContext();
-		
-		if (NotificationType.EMAIL.equals(notificationContext.getNotificationType())) {
-        	send(
-        		notificationContext.getUser().getEmail(),
-			    failedNotification.getSubject(),
-			    generateHtmlContent(notificationContext, failedNotification.getTemplate())
-			);
+    @Override
+    public void retryNotification(FailedNotification failedNotification) throws MessagingException, IOException {
+        NotificationContext notificationContext = failedNotification.getNotificationContext();
+        
+        if (NotificationType.EMAIL.equals(notificationContext.getNotificationType())) {
+            send(
+                notificationContext.getUser().getEmail(),
+                failedNotification.getSubject(),
+                generateHtmlContent(notificationContext, failedNotification.getTemplate())
+            );
         }
-	}
-	
-}
+    }
 
+    private Locale getLocale(NotificationContext notificationContext) {
+        // Adjust this to get the locale from the user or other context
+        return notificationContext.getUser().getPreferredLanguage();
+    }
+}

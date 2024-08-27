@@ -1,8 +1,10 @@
 package com.fastcash.moneytransfer.model;
 
 import java.time.LocalDateTime;
+import java.util.Locale;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 import com.fastcash.moneytransfer.enums.AuthMethod;
 import com.fastcash.moneytransfer.enums.UserType;
@@ -69,7 +71,10 @@ public class BaseUser {
 
     @NotNull
     private UserType userType;
-	
+    
+    @Column(nullable = false)
+    private Locale preferredLanguage;
+    
 	@Version
 	@Column(name = "version", nullable = false)
 	private int version;
@@ -77,6 +82,7 @@ public class BaseUser {
     private boolean deleted = Boolean.FALSE;
 	
 	public BaseUser() {
+		this.setPreferredLanguage(LocaleContextHolder.getLocale());
 		this.setEnabled(true);
 		this.setCreatedAt(LocalDateTime.now());
 	}
@@ -183,6 +189,14 @@ public class BaseUser {
 		this.userType = userType;
 	}
 	
+	public Locale getPreferredLanguage() {
+		return preferredLanguage;
+	}
+
+	public void setPreferredLanguage(Locale preferredLanguage) {
+		this.preferredLanguage = preferredLanguage;
+	}
+
 	public int getVersion() {
 		return version;
 	}

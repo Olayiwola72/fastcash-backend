@@ -2,21 +2,35 @@ package com.fastcash.moneytransfer.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Locale;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 import com.fastcash.moneytransfer.enums.Currency;
 import com.fastcash.moneytransfer.enums.NotificationType;
 import com.fastcash.moneytransfer.enums.TransactionDirection;
 import com.fastcash.moneytransfer.enums.TransactionType;
 import com.fastcash.moneytransfer.util.DataMasker;
+import com.fastcash.moneytransfer.util.DateFormatter;
 
 class NotificationContextTest {
+	
+	@InjectMocks
+	private DateFormatter dateFormatter;
+	
+	@Mock
+    private MessageSource messageSource;
 	
 	private final Long id = 0L;
 	private final Long accountNumber = 0L;
@@ -30,6 +44,10 @@ class NotificationContextTest {
     
 	@BeforeEach
 	void setUp() {
+		MockitoAnnotations.openMocks(this);
+        LocaleContextHolder.setLocale(Locale.US);
+    	when(messageSource.getMessage("date.at", null, LocaleContextHolder.getLocale())).thenReturn("at");
+    	
 		user = new User();
 		user.setEmail("test@email.com");
 		user.setName("John Date");
