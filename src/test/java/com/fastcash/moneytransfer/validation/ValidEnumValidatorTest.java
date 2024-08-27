@@ -38,13 +38,11 @@ class ValidEnumValidatorTest {
 
 			@Override
 			public String message() {
-				// TODO Auto-generated method stub
 				return null;
 			}
 
 			@Override
 			public Class<? extends Payload>[] payload() {
-				// TODO Auto-generated method stub
 				return null;
 			}
         };
