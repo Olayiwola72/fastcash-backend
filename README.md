@@ -56,14 +56,14 @@ To set up the project locally:
 
    ./prod.sh
 
-The application will be accessible at: <a href="http://localhost:8086/" target="_blank">
+The application will be accessible at: <a href="http://localhost:8086/" target="_blank">http://localhost:8086/</a>
 ## **✅ Usage Instructions**
-Once the application is running, open your browser and navigate to <a href="http://localhost:8086/" target="_blank">. Create a user account and start exploring the features of Fast Cash.
+Once the application is running, open your browser and navigate to <a href="http://localhost:8086/" target="_blank">http://localhost:8086/</a>. Create a user account and start exploring the features of Fast Cash.
 ## **📝 API Documentation**
 For detailed API information and testing, access the Swagger UI:
 
 <p align="center">
-   <a href="http://localhost:8086/swagger-ui" target="_blank">
+   <a href="http://localhost:8086/swagger-ui" target="_blank">http://localhost:8086/swagger-ui</a>
 </p>
 
 **✅ Features**
@@ -93,7 +93,7 @@ Backend tests can be run from the root folder using the command:
 Check out the live  of Fast Cash here:
 
 <p align="center">
-   <a href="http://fastcash.com/test" target="_blank">
+   <a href="http://fastcash.com/test" target="_blank">http://fastcash.com/test</a>
 </p>
 
 <p align="center">
