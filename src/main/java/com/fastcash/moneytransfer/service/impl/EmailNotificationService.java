@@ -147,7 +147,9 @@ public class EmailNotificationService implements EmailNotifiable {
     }
     
     private String generateHtmlContent(NotificationContext notificationContext, String template) throws IOException {
-        Context context = new Context();
+    	Locale locale = getLocale(notificationContext); // Get user's preferred locale
+
+        Context context = new Context(locale);  // Pass the locale to the context
         
         context.setVariable("userName", notificationContext.getName()); // Set the variable for Thymeleaf template
         context.setVariable("accounts", notificationContext.getUser().getAccounts()); // Set the variable for Thymeleaf template

@@ -14,6 +14,7 @@ public class MessageSourceConfig {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasename("classpath:messages");
         messageSource.setDefaultEncoding("UTF-8");
+        messageSource.setCacheSeconds(3600);  // Reload the message files every hour
         return messageSource;
     }
 	

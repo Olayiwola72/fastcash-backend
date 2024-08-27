@@ -12,6 +12,7 @@ import static org.mockito.Mockito.when;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Locale;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.thymeleaf.TemplateEngine;
 
@@ -34,6 +36,7 @@ import com.fastcash.moneytransfer.model.UserAccount;
 import com.fastcash.moneytransfer.repository.FailedNotificationRepository;
 import com.fastcash.moneytransfer.repository.NotificationContextRepository;
 import com.fastcash.moneytransfer.repository.UserRepository;
+import com.fastcash.moneytransfer.util.DateFormatter;
 
 import jakarta.mail.internet.MimeMessage;
 
@@ -57,6 +60,9 @@ class EmailNotificationServiceTest {
     @Mock
     private UserRepository userRepository;
     
+    @InjectMocks
+	private DateFormatter dateFormatter;
+	
     @Mock
     private MessageSource messageSource;
 
@@ -74,6 +80,8 @@ class EmailNotificationServiceTest {
 	@BeforeEach
 	void setUp() {
 		MockitoAnnotations.openMocks(this);
+		LocaleContextHolder.setLocale(Locale.US);
+    	when(messageSource.getMessage("date.at", null, LocaleContextHolder.getLocale())).thenReturn("at");
 		
 		user = new User();
 		user.setEmail("test@email.com");

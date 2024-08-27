@@ -111,6 +111,9 @@ public class UserService implements UserDetailsService {
         // Create account and save to user object in memory
         user.setAccounts(accountService.create(user));
         
+        // Fetch accounts if they are not fetched already
+        initializeUserCollections(user);
+        
         // Send deletion notification email asynchronously
         emailNotifiable.sendUserCreationNotification(new NotificationContext(NotificationType.EMAIL, user));
         return user;
