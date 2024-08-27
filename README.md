@@ -27,8 +27,7 @@ Fast Cash is a next-generation online bank that automates wallet creation and fa
 - **![](https://img.shields.io/badge/Tools-Git-informational?style=flat&logo=Git&color=F05032)**
 - **![](https://img.shields.io/badge/Tools-GitHub-informational?style=flat&logo=GitHub&color=181717)**
 ### **Back-End:**
-- **![](https://img.shields.io/badge/Code-SpringBoot-informational?style=flat&logo=SpringBoot&color=DB7093)**
-- **Spring Boot**
+- **![](https://img.shields.io/badge/Code-Spring_Boot-informational?style=flat&logo=Spring-Boot&color=DB7093)**
 - **Thymeleaf**
 - **Spring JPA**
 - **Spring Security**
