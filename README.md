@@ -33,8 +33,7 @@ Fast Cash is a next-generation online bank that automates wallet creation and fa
 - **Junit 5**
 - **Maven**
 ### **Database:**
-- **MySQL**
-![](https://img.shields.io/badge/Code-MySQL-informational?style=flat&logo=MySQL&color=336791)
+- **![](https://img.shields.io/badge/Code-MySQL-informational?style=flat&logo=MySQL&color=336791)**
 
 ## **Getting Started**
 To set up the project locally:
