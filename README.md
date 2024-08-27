@@ -43,7 +43,7 @@ To set up the project locally:
 
 1. **Install Dependencies and Start the Application:**
 
-   The project leverages Vite to bundle the front end and back end together. Use the provided script to install all dependencies and run the application.
+   The project leverages Vite & Maven to bundle both React and Spring Boot together. Use the provided script to install all dependencies and run the application.
 
    ./prod.sh
 
@@ -82,6 +82,12 @@ Backend tests can be run from the root folder using the command:
 Check out the live  of Fast Cash here:
 
 http://fastcash.com/test
+
+<p align=”center”>
+
+<img width=”200" height=”200" src=”https://private-user-images.githubusercontent.com/40915435/361814001-8fbbc93e-c226-4f9e-a429-aa425fb7e49f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjQ3NjQwMDYsIm5iZiI6MTcyNDc2MzcwNiwicGF0aCI6Ii80MDkxNTQzNS8zNjE4MTQwMDEtOGZiYmM5M2UtYzIyNi00ZjllLWE0MjktYWE0MjVmYjdlNDlmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA4MjclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwODI3VDEzMDE0NlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTg2ZTNhZGY1NzBkNjQxMWIwYWZjOTMxZDdiOTlmNGU4MzkxZTNiMmVmZmFlNzIyMWRlYjFkY2IzM2ZlZjEyZDQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.WDYqWKKWe8kgc9C7SpoThCXNAKK3jRNvtqGHtyo9sZc" alt=”fast cash home”>
+
+</p>
 
 ## **Contributing**
 Contributions to this project are welcome. Please follow the standard GitHub fork, branch, and pull request workflow. Feel free to raise issues or feature requests to enhance this project.
