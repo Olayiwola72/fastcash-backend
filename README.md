@@ -56,13 +56,15 @@ To set up the project locally:
 
    ./prod.sh
 
-The application will be accessible at: <http://localhost:8086/>
+The application will be accessible at: <a href="http://localhost:8086/" target="_blank">
 ## **✅ Usage Instructions**
-Once the application is running, open your browser and navigate to <http://localhost:8086/>. Create a user account and start exploring the features of Fast Cash.
+Once the application is running, open your browser and navigate to <a href="http://localhost:8086/" target="_blank">. Create a user account and start exploring the features of Fast Cash.
 ## **📝 API Documentation**
 For detailed API information and testing, access the Swagger UI:
 
-<http://localhost:8086/swagger-ui>
+<p align="center">
+   <a href="http://localhost:8086/swagger-ui" target="_blank">
+</p>
 
 **✅ Features**
 
@@ -90,7 +92,9 @@ Backend tests can be run from the root folder using the command:
 ## **✅ Demo**
 Check out the live  of Fast Cash here:
 
-http://fastcash.com/test
+<p align="center">
+   <a href="http://fastcash.com/test" target="_blank">
+</p>
 
 <p align="center">
    <img
@@ -112,7 +116,7 @@ N/A
 
 ### 🤝 Connect with me:
 
-<a href="https://www.linkedin.com/in/olayiwola-akinnagbe-371686172/">
+<a href="https://www.linkedin.com/in/olayiwola-akinnagbe-371686172/" target="_blank">
    <img 
       align="left" 
       src="https://github.com/Olayiwola72/my-profile/blob/main/linkedin.png" 
@@ -121,16 +125,16 @@ N/A
    />
 </a>
 
-<a href="https://twitter.com/OlayiwolaAkinn1">
+<a href="https://twitter.com/OlayiwolaAkinn1" target="_blank">
    <img 
       align="left" 
       src="https://github.com/Olayiwola72/my-profile/blob/main/twitter.png" 
       alt="Olayiwola Akinnagbe | Twitter" 
       width="21px"
-      />
+   />
 </a>
 
-<a href="https://drive.google.com/file/d/10uXqISOnCIMsoLgmxOJor1kdrrflcnAy/view?usp=sharing">
+<a href="https://drive.google.com/file/d/10uXqISOnCIMsoLgmxOJor1kdrrflcnAy/view?usp=sharing" target="_blank">
    <img 
       align="left" 
       src="https://github.com/Olayiwola72/my-profile/blob/main/cv.png" 
