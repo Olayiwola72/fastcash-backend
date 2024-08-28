@@ -1,7 +1,7 @@
 # **Fast Cash Portfolio Project**
 **Fast Cash** is a cutting-edge digital banking solution designed to simplify and enhance financial management by providing users with seamless and automatic wallet creation for both local and international payments. This project demonstrates my expertise as a Senior Software Engineer 💻,, integrating robust backend and frontend technologies to deliver a comprehensive and responsive web application.
 ## **🔭 Table of Contents**
-- [ Project Overview](#project-overview)
+- [Project Overview](#project-overview)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Usage Instructions](#usage-instructions)
@@ -9,7 +9,7 @@
 - [Features](#features)
 - [Testing](#testing)
 - [Demo](#demo)
-- [ Contributing](#contributing)
+- [Contributing](#contributing)
 - [License](#license)
 ## **🌱 Project Overview**
 Fast Cash is a next-generation online bank that automates wallet creation and facilitates effortless transactions. Whether handling local or international payments, Fast Cash aims to provide users with a streamlined, secure, and user-friendly experience.
@@ -105,7 +105,7 @@ Check out the live  of Fast Cash here:
    />
 </p>
 
-## **✅ Contributing**
+## ✅**Contributing**
 Contributions to this project are welcome. Please follow the standard GitHub fork, branch, and pull request workflow. Feel free to raise issues or feature requests to enhance this project.
 ## **License**
 N/A
