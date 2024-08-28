@@ -9,7 +9,7 @@
 - [Features](#features)
 - [Testing](#testing)
 - [Demo](#demo)
-- [Contributing](#contributing)
+- [ Contributing](#contributing)
 - [License](#license)
 ## **🌱 Project Overview**
 Fast Cash is a next-generation online bank that automates wallet creation and facilitates effortless transactions. Whether handling local or international payments, Fast Cash aims to provide users with a streamlined, secure, and user-friendly experience.
