@@ -69,6 +69,10 @@ To set up the project locally:
       </pre>
    </p>
 
+   ```sh
+   ./prod.sh
+
+
 The application will be accessible at: <a href="http://localhost:8086/" target="_blank">http://localhost:8086/</a>
 
 ## **✅ Usage Instructions**
