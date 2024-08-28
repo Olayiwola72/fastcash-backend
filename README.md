@@ -13,7 +13,7 @@
 - [Demo](#-demo)
 - [Contributing](#-contributing)
 - [License](#license)
-- [Connect With Me](#connect-with-me)
+- [Connect With Me](#-connect-with-me)
 
 ## **🌱 Project Overview**
 Fast Cash is a next-generation online bank that automates wallet creation and facilitates effortless transactions. Whether handling local or international payments, Fast Cash aims to provide users with a streamlined, secure, and user-friendly experience.
@@ -45,20 +45,29 @@ Fast Cash is a next-generation online bank that automates wallet creation and fa
 To set up the project locally:
 
 1. **✅ Clone the Repository:**
-
-   git clone https://github.com/Olayiwola72/fastcash-backend
+   <p align="center">
+      git clone https://github.com/Olayiwola72/fastcash-backend
+   </p>
 
 1. **✅ Submodule Initialization:**
 
    The frontend code is included as a submodule within the backend repository. Navigate to src/main/resources/client to interact with the front end.
 
-   git submodule update --init --recursive
+   <p align="center">
+      git submodule update --init --recursive
+   </p>
 
 1. **✅ Install Dependencies and Start the Application:**
 
    The project leverages Vite & Maven to bundle both React and Spring Boot together. Use the provided script to install all dependencies and run the application.
 
-   ./prod.sh
+   <p align="center">
+      <pre style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
+         <code style="color: #000; font-weight: bold;">
+            ./prod.sh
+         </code>
+      </pre>
+   </p>
 
 The application will be accessible at: <a href="http://localhost:8086/" target="_blank">http://localhost:8086/</a>
 
@@ -93,7 +102,9 @@ Fast Cash is packed with a variety of features aimed at providing a comprehensiv
 ## **✅ Testing**
 Backend tests can be run from the root folder using the command:
 
-./mvnw test
+<p align="center">
+   ./mvnw test
+</p>
 
 ## **✅ Demo**
 Check out the live  of Fast Cash here:
