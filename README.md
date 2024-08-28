@@ -45,28 +45,23 @@ Fast Cash is a next-generation online bank that automates wallet creation and fa
 To set up the project locally:
 
 1. **✅ Clone the Repository:**
-   <p align="center">
+
       ```sh
-git clone https://github.com/Olayiwola72/fastcash-backend
-   </p>
+      git clone https://github.com/Olayiwola72/fastcash-backend
 
 1. **✅ Submodule Initialization:**
 
    The frontend code is included as a submodule within the backend repository. Navigate to src/main/resources/client to interact with the front end.
 
-   <p align="center">
       ```sh 
-git submodule update --init --recursive
-   </p>
+      git submodule update --init --recursive
 
 1. **✅ Install Dependencies and Start the Application:**
 
    The project leverages Vite & Maven to bundle both React and Spring Boot together. Use the provided script to install all dependencies and run the application.
 
-<p align="center">
       ```sh
    ./prod.sh
-</p>
 
 The application will be accessible at: <a href="http://localhost:8086/" target="_blank">http://localhost:8086/</a>
 
