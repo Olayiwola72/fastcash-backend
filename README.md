@@ -96,11 +96,8 @@ Fast Cash is packed with a variety of features aimed at providing a comprehensiv
 ## **✅ Testing**
 Backend tests can be run from the root folder using the command:
 
-<p align="center">
-   <code>
-      ./mvnw test
-   </code>
-</p>
+   ```sh
+./mvnw test
 
 ## **✅ Demo**
 Check out the live  of Fast Cash here:
