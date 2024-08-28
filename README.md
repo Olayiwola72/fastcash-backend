@@ -62,16 +62,12 @@ To set up the project locally:
    The project leverages Vite & Maven to bundle both React and Spring Boot together. Use the provided script to install all dependencies and run the application.
 
    <p align="center">
-      <pre style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
+      <pre style="background-color: #f0f0f0; padding: 5px; border-radius: 5px;">
          <code style="color: #000; font-weight: bold;">
             ./prod.sh
          </code>
       </pre>
-   </p>
-
-   ```sh
-   ./prod.sh
-
+   </p> 
 
 The application will be accessible at: <a href="http://localhost:8086/" target="_blank">http://localhost:8086/</a>
 
