@@ -105,7 +105,7 @@ Check out the live  of Fast Cash here:
    />
 </p>
 
-## ✅**Contributing**
+## ✅ **Contributing**
 Contributions to this project are welcome. Please follow the standard GitHub fork, branch, and pull request workflow. Feel free to raise issues or feature requests to enhance this project.
 ## **License**
 N/A
