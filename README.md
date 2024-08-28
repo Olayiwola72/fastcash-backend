@@ -89,7 +89,7 @@ Backend tests can be run from the root folder using the command:
 
 ./mvnw test
 
-## **✅ Demo**
+## **✅Demo**
 Check out the live  of Fast Cash here:
 
 <p align="center">
