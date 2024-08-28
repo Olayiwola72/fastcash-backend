@@ -93,11 +93,13 @@ Fast Cash is packed with a variety of features aimed at providing a comprehensiv
 - **Transaction List PDF and Export Actions**
 - **Responsive Web Design**
 
-## **✅ Testing**
-Backend tests can be run from the root folder using the command:
+## **Testing**
+To run the tests locally:
 
-   ```sh
-./mvnw test
+1. **Backend Tests:**
+
+      ```sh
+      ./mvnw test
 
 ## **✅ Demo**
 Check out the live  of Fast Cash here:
