@@ -1,6 +1,6 @@
 # **Fast Cash Portfolio Project**
 
-**Fast Cash** is a cutting-edge digital banking solution designed to simplify and enhance financial management by providing users with seamless and automatic wallet creation for both local and international payments. This project demonstrates my expertise as a Senior Software Engineer 💻,, integrating robust backend and frontend technologies to deliver a comprehensive and responsive web application.
+**Fast Cash** is a cutting-edge digital banking solution designed to simplify and enhance financial management by providing users with seamless and automatic wallet creation for both local and international payments. This project demonstrates my expertise as a Senior Software Engineer 💻, integrating robust backend and frontend technologies to deliver a comprehensive and responsive web application.
 
 ## **🔭 Table of Contents**
 - [Project Overview](#-project-overview)
@@ -62,8 +62,8 @@ To set up the project locally:
    The project leverages Vite & Maven to bundle both React and Spring Boot together. Use the provided script to install all dependencies and run the application.
 
    <p align="center">
-      <pre style="background-color: #f0f0f0; padding: 5px; border-radius: 5px;">
-         <code style="color: #000; font-weight: bold;">
+      <pre style="background-color: white; padding: 1px; border-radius: 5px; text-align: center">
+         <code style="color: #000; font-weight: bold; text-align: center">
             ./prod.sh
          </code>
       </pre>
