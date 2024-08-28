@@ -93,13 +93,13 @@ Fast Cash is packed with a variety of features aimed at providing a comprehensiv
 - **Transaction List PDF and Export Actions**
 - **Responsive Web Design**
 
-## **Testing**
+## **✅ Testing**
 To run the tests locally:
 
-1. **Backend Tests:**
+- **![]Backend Tests**
 
-      ```sh
-      ./mvnw test
+   ```sh
+   ./mvnw test
 
 ## **✅ Demo**
 Check out the live  of Fast Cash here:
