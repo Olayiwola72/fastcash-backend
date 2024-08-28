@@ -1,22 +1,24 @@
 # **Fast Cash Portfolio Project**
-**Fast Cash** is a cutting-edge digital banking solution designed to simplify and enhance financial management by providing users with seamless and automatic wallet creation for both local and international payments. This project demonstrates my expertise as a Senior Software Engineer 💻, integrating robust backend and frontend technologies to deliver a comprehensive and responsive web application.
+
+**Fast Cash** is a cutting-edge digital banking solution designed to simplify and enhance financial management by providing users with seamless and automatic wallet creation for both local and international payments. This project demonstrates my expertise as a Senior Software Engineer 💻,, integrating robust backend and frontend technologies to deliver a comprehensive and responsive web application.
 
 ## **🔭 Table of Contents**
-- [Project Overview](#project-overview)
-- [Tech Stack](#tech-stack)
+- [Project Overview](#-project-overview)
+- [Tech Stack](#-tech-stack)
 - [Getting Started](#getting-started)
-- [Usage Instructions](#usage-instructions)
-- [API Documentation](#api-documentation)
-- [Features](#features)
-- [Testing](#testing)
-- [Demo](#demo)
-- [Contributing](#contributing)
+- [Usage Instructions](#-usage-instructions)
+- [API Documentation](#-api-documentation)
+- [Features](#-features)
+- [Testing](#-testing)
+- [Demo](#-demo)
+- [Contributing](#-contributing)
 - [License](#license)
+- [Connect With Me](#connect-with-me)
 
-## **🌱 Project Overview** {#project-overview}
+## **🌱 Project Overview**
 Fast Cash is a next-generation online bank that automates wallet creation and facilitates effortless transactions. Whether handling local or international payments, Fast Cash aims to provide users with a streamlined, secure, and user-friendly experience.
 
-## **💼 Tech Stack** {#tech-stack}
+## **💼 Tech Stack**
 ### **Front-End:**
 - **![](https://img.shields.io/badge/Code-React-informational?style=flat&logo=react&color=61DAFB)**
 - **![](https://img.shields.io/badge/Code-Redux-informational?style=flat&logo=Redux&color=764ABC)**
@@ -28,7 +30,6 @@ Fast Cash is a next-generation online bank that automates wallet creation and fa
 - **![](https://img.shields.io/badge/Tools-NPM-informational?style=flat&logo=NPM&color=CB3837)**
 - **![](https://img.shields.io/badge/Tools-Git-informational?style=flat&logo=Git&color=F05032)**
 - **![](https://img.shields.io/badge/Tools-GitHub-informational?style=flat&logo=GitHub&color=181717)**
-
 ### **Back-End:**
 - **![](https://img.shields.io/badge/Code-Spring_Boot-informational?style=flat&logo=Spring-Boot&color=DB7093)**
 - **![](https://img.shields.io/badge/Code-Spring_JPA-informational?style=flat&logo=Spring-JPA&color=CC342D)**
@@ -40,7 +41,7 @@ Fast Cash is a next-generation online bank that automates wallet creation and fa
 ### **Database:**
 - **![](https://img.shields.io/badge/Code-MySQL-informational?style=flat&logo=MySQL&color=336791)**
 
-## **✅ Getting Started** {#getting-started}
+## **Getting Started**
 To set up the project locally:
 
 1. **✅ Clone the Repository:**
@@ -61,17 +62,18 @@ To set up the project locally:
 
 The application will be accessible at: <a href="http://localhost:8086/" target="_blank">http://localhost:8086/</a>
 
-## **✅ Usage Instructions** {#usage-instructions}
+## **✅ Usage Instructions**
 Once the application is running, open your browser and navigate to <a href="http://localhost:8086/" target="_blank">http://localhost:8086/</a>. Create a user account and start exploring the features of Fast Cash.
 
-## **📝 API Documentation** {#api-documentation}
+## **📝 API Documentation**
 For detailed API information and testing, access the Swagger UI:
 
 <p align="center">
    <a href="http://localhost:8086/swagger-ui" target="_blank">http://localhost:8086/swagger-ui</a>
 </p>
 
-## **✅ Features** {#features}
+## **✅ Features**
+
 Fast Cash is packed with a variety of features aimed at providing a comprehensive digital banking experience:
 
 - **JWT User Authentication**
@@ -88,13 +90,13 @@ Fast Cash is packed with a variety of features aimed at providing a comprehensiv
 - **Transaction List PDF and Export Actions**
 - **Responsive Web Design**
 
-## **✅ Testing** {#testing}
+## **✅ Testing**
 Backend tests can be run from the root folder using the command:
 
 ./mvnw test
 
-## **✅ Demo** {#demo}
-Check out the live demo of Fast Cash here:
+## **✅ Demo**
+Check out the live  of Fast Cash here:
 
 <p align="center">
    <a href="http://fastcash.com/test" target="_blank">http://fastcash.com/test</a>
@@ -109,17 +111,17 @@ Check out the live demo of Fast Cash here:
    />
 </p>
 
-## **✅ Contributing** {#contributing}
+## **✅ Contributing**
 Contributions to this project are welcome. Please follow the standard GitHub fork, branch, and pull request workflow. Feel free to raise issues or feature requests to enhance this project.
 
-## **License** {#license}
+## **License**
 N/A
 
 ## **📈 GitHub Stats**
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Olayiwola72&layout=compact)](https://github.com/Olayiwola72)
 
-### **🤝 Connect with me**
+## **🤝 Connect With Me**
 
 <a href="https://www.linkedin.com/in/olayiwola-akinnagbe-371686172/" target="_blank">
    <img 
