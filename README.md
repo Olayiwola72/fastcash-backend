@@ -1,17 +1,19 @@
 # **Fast Cash Portfolio Project**
 **Fast Cash** is a cutting-edge digital banking solution designed to simplify and enhance financial management by providing users with seamless and automatic wallet creation for both local and international payments. This project demonstrates my expertise as a Senior Software Engineer 💻,, integrating robust backend and frontend technologies to deliver a comprehensive and responsive web application.
 ## **🔭 Table of Contents**
-- [Project Overview](#project-overview)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Usage Instructions](#usage-instructions)
-- [API Documentation](#api-documentation)
-- [Features](#features)
-- [Testing](#testing)
-- [Demo](#demo)
-- [Contributing](#contributing)
+- [Project Overview](#-🌱-project-overview)
+- [Tech Stack](#-💼-tech-stack)
+- [Getting Started](#-getting-started)
+- [Usage Instructions](#-✅-usage-instructions)
+- [API Documentation](#-📝-api-documentation)
+- [Features](#-✅-features)
+- [Testing](#-✅-testing)
+- [Demo](#-✅-demo)
+- [Contributing](#-✅-contributing)
 - [License](#license)
-## **🌱 Project Overview**
+- [Connect with me](#🤝-connect-with-me)
+
+## ** 🌱 Project Overview**
 Fast Cash is a next-generation online bank that automates wallet creation and facilitates effortless transactions. Whether handling local or international payments, Fast Cash aims to provide users with a streamlined, secure, and user-friendly experience.
 
 ## **💼 Tech Stack**
@@ -89,7 +91,7 @@ Backend tests can be run from the root folder using the command:
 
 ./mvnw test
 
-## **✅Demo**
+## **✅ Demo**
 Check out the live  of Fast Cash here:
 
 <p align="center">
@@ -105,16 +107,16 @@ Check out the live  of Fast Cash here:
    />
 </p>
 
-## ✅ **Contributing**
+## **✅ Contributing**
 Contributions to this project are welcome. Please follow the standard GitHub fork, branch, and pull request workflow. Feel free to raise issues or feature requests to enhance this project.
 ## **License**
 N/A
 
-## 📈 GitHub Stats 
+## **📈 GitHub Stats** 
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Olayiwola72&layout=compact)](https://github.com/Olayiwola72)
 
-### 🤝 Connect with me:
+### **🤝 Connect with me**
 
 <a href="https://www.linkedin.com/in/olayiwola-akinnagbe-371686172/" target="_blank">
    <img 
