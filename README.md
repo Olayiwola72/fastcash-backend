@@ -1,7 +1,7 @@
 # **Fast Cash Portfolio Project**
 **Fast Cash** is a cutting-edge digital banking solution designed to simplify and enhance financial management by providing users with seamless and automatic wallet creation for both local and international payments. This project demonstrates my expertise as a Senior Software Engineer 💻,, integrating robust backend and frontend technologies to deliver a comprehensive and responsive web application.
 ## **🔭 Table of Contents**
-- [Project Overview](#project-overview)
+- [ Project Overview](#project-overview)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Usage Instructions](#usage-instructions)
