@@ -96,7 +96,7 @@ Fast Cash is packed with a variety of features aimed at providing a comprehensiv
 ## **✅ Testing**
 To run the tests locally:
 
-- **!Backend Tests**
+- **Backend Tests**
 
    ```sh
    ./mvnw test
