@@ -46,7 +46,8 @@ To set up the project locally:
 
 1. **✅ Clone the Repository:**
    <p align="center">
-      git clone https://github.com/Olayiwola72/fastcash-backend
+      ```sh
+git clone https://github.com/Olayiwola72/fastcash-backend
    </p>
 
 1. **✅ Submodule Initialization:**
@@ -54,20 +55,18 @@ To set up the project locally:
    The frontend code is included as a submodule within the backend repository. Navigate to src/main/resources/client to interact with the front end.
 
    <p align="center">
-      git submodule update --init --recursive
+      ```sh 
+git submodule update --init --recursive
    </p>
 
 1. **✅ Install Dependencies and Start the Application:**
 
    The project leverages Vite & Maven to bundle both React and Spring Boot together. Use the provided script to install all dependencies and run the application.
 
-   <p align="center">
-      <pre style="background-color: white; padding: 1px; border-radius: 5px; text-align: center">
-         <code style="color: #000; font-weight: bold; text-align: center">
-            ./prod.sh
-         </code>
-      </pre>
-   </p> 
+<p align="center">
+      ```sh
+   ./prod.sh
+</p>
 
 The application will be accessible at: <a href="http://localhost:8086/" target="_blank">http://localhost:8086/</a>
 
