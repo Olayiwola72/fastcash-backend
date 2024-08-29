@@ -1,4 +1,5 @@
 services:
+
   - type: web  # Since Render doesn't have a direct "service" type for arbitrary containers, use "web"
     name: mysql
     runtime: docker
@@ -6,8 +7,6 @@ services:
     region: frankfurt
     plan: free
     envVars:
-      # - key: PORT
-      #   value: 3036  # Expose the MySQL port internally
       - key: MYSQL_ROOT_PASSWORD
         value: root
       - key: MYSQL_DATABASE
@@ -21,19 +20,32 @@ services:
     plan: free
     healthCheckPath: /
     envVars:
-      - key: SPRING_DATASOURCE_URL
-        value: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/springboot_db?autoReconnect=true
-
-      - key: MYSQL_HOST
-        fromService: # Reference a property from another service (see available properties below)
+      # - key: SPRING_DATASOURCE_USERNAME
+        # value: root
+        # fromService: # Reference a property from another service
+        #   type: web
+        #   name: mysql
+        #   property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: root
+        # fromService:
+        #   type: web
+        #   name: mysql
+        #   property: password
+      - key: SPRING_DATASOURCE_HOST
+        fromService:
           type: web
           name: mysql
           property: host
-      - key: MYSQL_PORT
+      - key: SPRING_DATASOURCE_PORT
         fromService:
           type: web
           name: mysql
           property: port
-          
-      - key: PORT
-        value: 10000  # Expose the port the app runs on
+      # - key: SPRING_DATASOURCE_SCHEMA
+      #   fromService:
+      #     type: web
+      #     name: mysql
+      #     property: database
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:mysql://${SPRING_DATASOURCE_HOST}:${SPRING_DATASOURCE_PORT}/springboot_db?autoReconnect=true&createDatabaseIfNotExist=true         

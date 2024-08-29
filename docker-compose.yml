@@ -17,6 +17,6 @@ services:
     ports:
       - "8086:8086"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/springboot_db?autoReconnect=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/springboot_db?autoReconnect=true&createDatabaseIfNotExist=true
     depends_on:
       - docker-mysql
