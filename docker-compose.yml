@@ -17,6 +17,8 @@ services:
     ports:
       - "8086:8086"
     environment:
+      # SPRING_DATASOURCE_USERNAME: root
+      # SPRING_DATASOURCE_PASSWORD: root
       SPRING_PROFILES_ACTIVE: prod
       SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/springboot_db?autoReconnect=true&createDatabaseIfNotExist=true
     depends_on:

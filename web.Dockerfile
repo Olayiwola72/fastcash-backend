@@ -13,13 +13,14 @@ WORKDIR /app
 # Copy the Maven project files
 COPY pom.xml .
 
-COPY .env /app/.env
-
 # Copy the rest of the project files
-COPY src ./src
+COPY src /app/src
 
 # Resolve Maven dependencies
 RUN mvn -e -B dependency:resolve
+
+# Optionally copy .env if it exists
+# RUN if [ -f /app/.env ]; then cp /app/.env /app/.env; fi
 
 # Install Node.js (for Node.js version 22.x)
 RUN apt-get update && \
@@ -38,6 +39,9 @@ WORKDIR /app
 
 # Copy the JAR file from the builder stage
 COPY --from=builder /app/target/money-transfer-0.0.1-SNAPSHOT.jar /app/money-transfer-0.0.1-SNAPSHOT.jar
+
+# Optionally copy .env if it exists
+# RUN if [ -f /app/.env ]; then cp /app/.env /app/.env; fi
 
 # Command to run the application
 ENTRYPOINT ["java", "-jar", "money-transfer-0.0.1-SNAPSHOT.jar"]
