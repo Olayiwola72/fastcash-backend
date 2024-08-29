@@ -13,8 +13,8 @@ WORKDIR /app
 # Copy the Maven project files
 COPY pom.xml .
 
-COPY .env .
-COPY .env .env.production
+# COPY .env .
+# COPY .env .env.production
 
 # Copy the rest of the project files
 COPY src ./src
