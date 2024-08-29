@@ -113,7 +113,7 @@ Check out the live  of Fast Cash here:
       width="500"
       height="300"
       alt="fast cash home"
-      src="https://private-user-images.githubusercontent.com/40915435/361814001-8fbbc93e-c226-4f9e-a429-aa425fb7e49f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjQ3NjQwMDYsIm5iZiI6MTcyNDc2MzcwNiwicGF0aCI6Ii80MDkxNTQzNS8zNjE4MTQwMDEtOGZiYmM5M2UtYzIyNi00ZjllLWE0MjktYWE0MjVmYjdlNDlmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA4MjclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwODI3VDEzMDE0NlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTg2ZTNhZGY1NzBkNjQxMWIwYWZjOTMxZDdiOTlmNGU4MzkxZTNiMmVmZmFlNzIyMWRlYjFkY2IzM2ZlZjEyZDQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.WDYqWKKWe8kgc9C7SpoThCXNAKK3jRNvtqGHtyo9sZc"
+      src="https://github.com/Olayiwola72/my-profile/blob/main/fastcash.png"
    />
 </p>
 
