@@ -1,5 +1,4 @@
 services:
-
   - type: web  # Since Render doesn't have a direct "service" type for arbitrary containers, use "web"
     name: mysql
     runtime: docker
@@ -21,12 +20,10 @@ services:
     plan: free
     healthCheckPath: /
     envVars:
-      # - key: SPRING_DATASOURCE_USERNAME
-        # value: root
-        # fromService: # Reference a property from another service
-        #   type: web
-        #   name: mysql
-        #   property: user
+      - key: SPRING_PROFILES_ACTIVE
+        value: render
+      - key: SPRING_DATASOURCE_NAME
+        value: springboot_db
       - key: SPRING_DATASOURCE_PASSWORD
         value: root
         # fromService:
@@ -43,10 +40,5 @@ services:
           type: web
           name: mysql
           property: port
-      # - key: SPRING_DATASOURCE_SCHEMA
-      #   fromService:
-      #     type: web
-      #     name: mysql
-      #     property: database
       - key: SPRING_DATASOURCE_URL
-        value: jdbc:mysql://${SPRING_DATASOURCE_HOST}:${SPRING_DATASOURCE_PORT}/springboot_db?autoReconnect=true&createDatabaseIfNotExist=true         
+        value: jdbc:mysql://${SPRING_DATASOURCE_HOST}:${SPRING_DATASOURCE_PORT}/${SPRING_DATASOURCE_NAME}?autoReconnect=true&createDatabaseIfNotExist=true         

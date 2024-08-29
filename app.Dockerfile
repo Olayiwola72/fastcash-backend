@@ -44,4 +44,4 @@ COPY --from=builder /app/target/money-transfer-0.0.1-SNAPSHOT.jar /app/money-tra
 RUN if [ -f /app/.env ]; then cp /app/.env /app/.env; fi
 
 # Command to run the application
-ENTRYPOINT ["java", "-jar", "money-transfer-0.0.1-SNAPSHOT.jar", "--spring.profiles.active=prod"]
+ENTRYPOINT ["java", "-jar", "money-transfer-0.0.1-SNAPSHOT.jar"]
