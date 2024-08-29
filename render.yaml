@@ -39,10 +39,11 @@ services:
           name: mysql
           property: host
       - key: SPRING_DATASOURCE_PORT
-        fromService:
-          type: web
-          name: mysql
-          property: port
+        value: 0.0.0.0
+        # fromService:
+        #   type: web
+        #   name: mysql
+        #   property: port
       # - key: SPRING_DATASOURCE_SCHEMA
       #   fromService:
       #     type: web
