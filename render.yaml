@@ -3,9 +3,8 @@ databases:
     databaseName: db
     user: dbuser
     postgresMajorVersion: "10"
-    
-services:
 
+services:
   - type: web  # Since Render doesn't have a direct "service" type for arbitrary containers, use "web"
     name: mysql
     runtime: docker
