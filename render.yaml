@@ -1,0 +1,23 @@
+services:
+
+  - type: web  # Since Render doesn't have a direct "service" type for arbitrary containers, use "web"
+    name: mysql
+    runtime: docker
+    dockerfilePath: ./sql.Dockerfile  # Path to your custom Dockerfile
+    envVars:
+      - key: PORT
+        value: 3036  # Expose the MySQL port internally
+      - key: MYSQL_ROOT_PASSWORD
+        value: root
+      - key: MYSQL_DATABASE
+        value: springboot_db
+
+  - type: web
+    name: springboot-app
+    runtime: docker
+    dockerfilePath: ./app.Dockerfile
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:mysql://mysql:3306/springboot_db?autoReconnect=true
+      - key: PORT
+        value: 8086  # Expose the port the app runs on

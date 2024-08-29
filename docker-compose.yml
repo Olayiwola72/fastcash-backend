@@ -1,7 +1,9 @@
 services:
 
   docker-mysql:
-    image: mysql:8.0.17
+    build:
+      context: ./
+      dockerfile: sql.Dockerfile
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=springboot_db
