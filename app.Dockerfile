@@ -19,6 +19,9 @@ RUN mvn -e -B dependency:resolve
 # Copy the rest of the project files
 COPY src ./src
 
+# Copy environmental variables
+COPY .env .env
+
 # Install Node.js (for Node.js version 22.x)
 RUN apt-get update && \
     apt-get install -y curl gnupg && \
@@ -37,5 +40,7 @@ WORKDIR /app
 # Copy the JAR file from the builder stage
 COPY --from=builder /app/target/money-transfer-0.0.1-SNAPSHOT.jar /app/money-transfer-0.0.1-SNAPSHOT.jar
 
+COPY --from=builder /app/.env /app/.env
+
 # Command to run the application
-ENTRYPOINT ["java", "-jar", "money-transfer-0.0.1-SNAPSHOT.jar", "--spring.profiles.active=docker"]
+ENTRYPOINT ["java", "-jar", "money-transfer-0.0.1-SNAPSHOT.jar", "--spring.profiles.active=prod"]

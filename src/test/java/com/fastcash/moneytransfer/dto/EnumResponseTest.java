@@ -13,11 +13,11 @@ class EnumResponseTest {
 	
 	@Test
 	void testEnumResponseDefaultConstructor() {
-		EnumResponse enumResponse = new EnumResponse();
+		ConfigResponse configResponse = new ConfigResponse();
 		
-		assertEquals(DateFormatter.today(), enumResponse.todayDate());
-		assertEquals(Currency.values().length, enumResponse.currencies().size());
-		assertEquals(AuthMethod.values().length, enumResponse.providers().length);
-		assertEquals(TransactionType.values().length, enumResponse.transactionTypes().length);
+		assertEquals(DateFormatter.today(), configResponse.todayDate());
+		assertEquals(Currency.values().length, configResponse.currencies().size());
+		assertEquals(AuthMethod.values().length, configResponse.providers().length);
+		assertEquals(TransactionType.values().length, configResponse.transactionTypes().length);
 	}
 }

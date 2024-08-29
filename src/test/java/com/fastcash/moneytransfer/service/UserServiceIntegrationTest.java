@@ -37,7 +37,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.thymeleaf.TemplateEngine;
 
-import com.fastcash.moneytransfer.config.ExchangeRateConfig;
 import com.fastcash.moneytransfer.config.MessageSourceConfig;
 import com.fastcash.moneytransfer.config.PasswordConfig;
 import com.fastcash.moneytransfer.config.RestTemplateConfig;
@@ -80,7 +79,6 @@ import com.fastcash.moneytransfer.validation.UserValidator;
 @DataJpaTest
 @Import({
 	RestTemplateConfig.class,
-	ExchangeRateConfig.class,
 	UserService.class,
 	InternalAccountService.class,
 	InternalChargeAccountService.class,

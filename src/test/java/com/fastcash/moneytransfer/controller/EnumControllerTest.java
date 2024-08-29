@@ -40,7 +40,7 @@ class EnumControllerTest {
 	
 	@Test
     public void testControllerIsAnnotatedWithApiBaseUrlPrefix() {
-        boolean isAnnotated = EnumController.class.isAnnotationPresent(ApiBaseUrlPrefix.class);
+        boolean isAnnotated = ConfigController.class.isAnnotationPresent(ApiBaseUrlPrefix.class);
         assertTrue(isAnnotated);
     }
 	

@@ -20,7 +20,7 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
 	private final RestTemplate restTemplate;
     private final ExchangeRateConfig exchangeRateConfig;
     private final ReloadableResourceBundleMessageSource messageSource;
-
+    
     public ExchangeRateServiceImpl(RestTemplate restTemplate, ExchangeRateConfig exchangeRateConfig, ReloadableResourceBundleMessageSource messageSource) {
         this.restTemplate = restTemplate;
         this.exchangeRateConfig = exchangeRateConfig;
@@ -29,8 +29,8 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
 	
 	@Override
 	public ExchangeRateResponse getExchangeRate(String baseCurrency, String targetCurrency) {
-		String url = UriComponentsBuilder.fromHttpUrl(exchangeRateConfig.getApiUrl())
-                .pathSegment(exchangeRateConfig.getApiKey(), exchangeRateConfig.getApiPlan(), baseCurrency, targetCurrency)
+		String url = UriComponentsBuilder.fromHttpUrl(exchangeRateConfig.url())
+                .pathSegment(exchangeRateConfig.key(), exchangeRateConfig.plan(), baseCurrency, targetCurrency)
                 .toUriString();
 		
 		return fetchExchangeRateData(url);
@@ -39,8 +39,8 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
 	
 	@Override
     public ExchangeRateResponse getExchangeAmount(String baseCurrency, String targetCurrency, BigDecimal amount) throws ExchangeRateException {
-        String url = UriComponentsBuilder.fromHttpUrl(exchangeRateConfig.getApiUrl())
-                .pathSegment(exchangeRateConfig.getApiKey(), exchangeRateConfig.getApiPlan(), baseCurrency, targetCurrency, String.valueOf(amount))
+        String url = UriComponentsBuilder.fromHttpUrl(exchangeRateConfig.url())
+                .pathSegment(exchangeRateConfig.key(), exchangeRateConfig.plan(), baseCurrency, targetCurrency, String.valueOf(amount))
                 .toUriString();
         
         return fetchExchangeRateData(url);

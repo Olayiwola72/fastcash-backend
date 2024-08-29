@@ -31,7 +31,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.thymeleaf.TemplateEngine;
 
-import com.fastcash.moneytransfer.config.ExchangeRateConfig;
 import com.fastcash.moneytransfer.config.MessageSourceConfig;
 import com.fastcash.moneytransfer.config.PasswordConfig;
 import com.fastcash.moneytransfer.config.RestTemplateConfig;
@@ -86,7 +85,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @WebMvcTest(MoneyTransferController.class)
 @Import({
 	RestTemplateConfig.class,
-	ExchangeRateConfig.class,
 	MoneyTransferService.class,
 	MessageSourceConfig.class,
 	TokenAuthenticationService.class,

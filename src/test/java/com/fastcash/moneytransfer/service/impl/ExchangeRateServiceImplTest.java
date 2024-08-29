@@ -55,8 +55,8 @@ class ExchangeRateServiceImplTest {
         failureResponse = new ExchangeRateResponse("error", baseCurrency, targetCurrency, null, null, "invalid-key");
         
         // Mock common configurations
-        when(exchangeRateConfig.getApiUrl()).thenReturn(apiUrl);
-        when(exchangeRateConfig.getApiKey()).thenReturn(apiKey);
+        when(exchangeRateConfig.url()).thenReturn(apiUrl);
+        when(exchangeRateConfig.key()).thenReturn(apiKey);
     }
 
     @Test

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fastcash.moneytransfer.annotation.ApiBaseUrlPrefix;
-import com.fastcash.moneytransfer.dto.EnumResponse;
+import com.fastcash.moneytransfer.dto.ConfigResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -21,16 +21,16 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @ApiBaseUrlPrefix
 @RequestMapping("/enums")
-@Tag(name = "Enum Controller", description = "Enum Controller API")
-public class EnumController {
-	@Operation(summary = "Get Default Enums")
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Get Default Enums", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = EnumResponse.class)) }),
+@Tag(name = "Config Controller", description = "Config Controller API")
+public class ConfigController {
+	@Operation(summary = "Get Default Config")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Get Default Config", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = ConfigResponse.class)) }),
 	})
 	@SecurityRequirement(name = "Bearer Key")
 	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<EnumResponse> get() {	
-        return ResponseEntity.ok(new EnumResponse());
+	public ResponseEntity<ConfigResponse> get() {	
+        return ResponseEntity.ok(new ConfigResponse());
 	}
 }

@@ -6,20 +6,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Locale;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.thymeleaf.TemplateEngine;
 
-import com.fastcash.moneytransfer.config.ExchangeRateConfig;
 import com.fastcash.moneytransfer.config.MessageSourceConfig;
 import com.fastcash.moneytransfer.config.PasswordConfig;
 import com.fastcash.moneytransfer.config.RestTemplateConfig;
@@ -43,6 +47,7 @@ import com.fastcash.moneytransfer.repository.MoneyTransferRepository;
 import com.fastcash.moneytransfer.repository.UserAccountRepository;
 import com.fastcash.moneytransfer.service.impl.EmailNotificationService;
 import com.fastcash.moneytransfer.service.impl.ExchangeRateServiceImpl;
+import com.fastcash.moneytransfer.util.DateFormatter;
 import com.fastcash.moneytransfer.util.PercentageChargeCalculator;
 import com.fastcash.moneytransfer.util.UUIDTimestampTransactionIdGenerator;
 import com.fastcash.moneytransfer.validation.UserValidator;
@@ -50,7 +55,6 @@ import com.fastcash.moneytransfer.validation.UserValidator;
 @DataJpaTest
 @Import({ 
 	RestTemplateConfig.class,
-	ExchangeRateConfig.class,
 	PasswordConfig.class,
 	UserService.class, 
 	MessageSourceConfig.class,
@@ -117,6 +121,12 @@ class MoneyTransferServiceTest {
 	@MockBean
     private EmailNotifiable emailNotifiable;
 	
+	@Mock
+    private MessageSource messageSource;
+
+    @InjectMocks
+    private DateFormatter dateFormatter;
+	
 	@Value("${app.admin.email}") 
 	private String adminEmail;
 	
@@ -129,6 +139,10 @@ class MoneyTransferServiceTest {
 	
 	@BeforeEach
 	void setUp() {
+		MockitoAnnotations.openMocks(this);
+        // Default Locale to US
+        LocaleContextHolder.setLocale(Locale.US);
+        
 		user = new User("test@user.com", adminPassword);
 		entityManager.persist(user);
         entityManager.flush();

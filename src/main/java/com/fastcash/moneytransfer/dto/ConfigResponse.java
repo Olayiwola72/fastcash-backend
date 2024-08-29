@@ -10,7 +10,7 @@ import com.fastcash.moneytransfer.util.DateFormatter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 
-public record EnumResponse(
+public record ConfigResponse(
 		@NotNull
 		@Schema(accessMode = Schema.AccessMode.READ_ONLY, description = "today's date dd/MM/yyyy")
 		String todayDate,
@@ -30,7 +30,7 @@ public record EnumResponse(
 	) {
 	
 	// Default constructor with default values
-    public EnumResponse() {
+    public ConfigResponse() {
         this(
         	DateFormatter.today(),
     		Currency.getCurrencyResponse(), 

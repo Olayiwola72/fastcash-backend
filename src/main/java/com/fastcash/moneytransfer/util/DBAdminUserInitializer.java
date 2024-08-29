@@ -18,7 +18,7 @@ public class DBAdminUserInitializer {
 			@Value("${app.admin.email}") String email,
 			@Value("${app.admin.password}") String password,
 			@Value("${app.admin.user.roles}") String roles,
-			@Value("${spring.application.name}") String applicationName,
+			@Value("${app.companyName}") String applicationName,
 			UserService userService,
 			AdminRepository adminRepository
 			) {
