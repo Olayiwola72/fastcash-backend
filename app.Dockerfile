@@ -23,6 +23,7 @@ COPY src ./src
 # RUN if [ -f /app/.env ]; then cp /app/.env /app/.env; fi
 
 COPY .env /app/.env
+COPY .env /app/.env.production
 
 # Install Node.js (for Node.js version 22.x)
 RUN apt-get update && \

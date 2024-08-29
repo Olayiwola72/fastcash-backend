@@ -168,7 +168,7 @@
 							<executable>npm</executable>
 							<arguments>
 								<argument>run</argument>
-								<argument>build:render</argument>
+								<argument>build</argument>
 							</arguments>
 						</configuration>
 					</execution>
