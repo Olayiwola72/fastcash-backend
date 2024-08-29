@@ -1,44 +1,88 @@
-services:
-  - type: web  # Since Render doesn't have a direct "service" type for arbitrary containers, use "web"
-    name: mysql
-    runtime: docker
-    dockerfilePath: ./sql.Dockerfile  # Path to your custom Dockerfile
+databases:
+  - name: postgresql
     region: frankfurt
-    autoDeploy: false
     plan: free
-    envVars:
-      - key: MYSQL_ROOT_PASSWORD
-        value: root
-      - key: MYSQL_DATABASE
-        value: springboot_db
+    ipAllowList: # required
+      - source: 0.0.0.0/0
+        description: everywhere
 
+services:
   - type: web
     name: fast-cash
     runtime: docker
-    dockerfilePath: ./app.Dockerfile
     region: frankfurt
     plan: free
     healthCheckPath: /
     envVars:
-      - key: SPRING_PROFILES_ACTIVE
-        value: render
-      - key: SPRING_DATASOURCE_NAME
-        value: springboot_db
+      - key: SPRING_DATASOURCE_CONNECTION_STRING
+        fromDatabase:
+          name: postgresql
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: postgresql
+          property: user
       - key: SPRING_DATASOURCE_PASSWORD
-        value: root
-        # fromService:
-        #   type: web
-        #   name: mysql
-        #   property: password
+        fromDatabase:
+          name: postgresql
+          property: password
       - key: SPRING_DATASOURCE_HOST
-        fromService:
-          type: web
-          name: mysql
+        fromDatabase:
+          name: postgresql
           property: host
       - key: SPRING_DATASOURCE_PORT
-        fromService:
-          type: web
-          name: mysql
+        fromDatabase:
+          name: postgresql
           property: port
+      - key: SPRING_DATASOURCE_SCHEMA
+        fromDatabase:
+          name: postgresql
+          property: database
       - key: SPRING_DATASOURCE_URL
-        value: jdbc:mysql://${SPRING_DATASOURCE_HOST}:${SPRING_DATASOURCE_PORT}/${SPRING_DATASOURCE_NAME}?autoReconnect=true&createDatabaseIfNotExist=true         
+        value: jdbc:postgresql://${SPRING_DATASOURCE_HOST}:${SPRING_DATASOURCE_PORT}/${SPRING_DATASOURCE_SCHEMA}
+
+
+  # - type: web  # Since Render doesn't have a direct "service" type for arbitrary containers, use "web"
+  #   name: mysql
+  #   runtime: docker
+  #   dockerfilePath: ./sql.Dockerfile  # Path to your custom Dockerfile
+  #   region: frankfurt
+  #   autoDeploy: false
+  #   plan: free
+  #   envVars:
+  #     - key: MYSQL_ROOT_PASSWORD
+  #       value: root
+  #     - key: MYSQL_DATABASE
+  #       value: springboot_db
+
+  # - type: web
+  #   name: fast-cash
+  #   runtime: docker
+  #   dockerfilePath: ./app.Dockerfile
+  #   region: frankfurt
+  #   plan: free
+  #   healthCheckPath: /
+  #   envVars:
+  #     - key: SPRING_PROFILES_ACTIVE
+  #       value: render
+  #     - key: SPRING_DATASOURCE_NAME
+  #       value: springboot_db
+  #     - key: SPRING_DATASOURCE_PASSWORD
+  #       value: root
+  #       # fromService:
+  #       #   type: web
+  #       #   name: mysql
+  #       #   property: password
+  #     - key: SPRING_DATASOURCE_HOST
+  #       fromService:
+  #         type: web
+  #         name: mysql
+  #         property: host
+  #     - key: SPRING_DATASOURCE_PORT
+  #       fromService:
+  #         type: web
+  #         name: mysql
+  #         property: port
+  #     - key: SPRING_DATASOURCE_URL
+  #       value: jdbc:mysql://${SPRING_DATASOURCE_HOST}:${SPRING_DATASOURCE_PORT}/${SPRING_DATASOURCE_NAME}?autoReconnect=true&createDatabaseIfNotExist=true   
+              
