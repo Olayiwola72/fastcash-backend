@@ -20,7 +20,9 @@ RUN mvn -e -B dependency:resolve
 COPY src ./src
 
 # Optionally copy .env if it exists
-RUN if [ -f /app/.env ]; then cp /app/.env /app/.env; fi
+# RUN if [ -f /app/.env ]; then cp /app/.env /app/.env; fi
+
+COPY .env /app/.env
 
 # Install Node.js (for Node.js version 22.x)
 RUN apt-get update && \
@@ -41,7 +43,8 @@ WORKDIR /app
 COPY --from=builder /app/target/money-transfer-0.0.1-SNAPSHOT.jar /app/money-transfer-0.0.1-SNAPSHOT.jar
 
 # Optionally copy .env if it exists
-RUN if [ -f /app/.env ]; then cp /app/.env /app/.env; fi
+# RUN if [ -f /app/.env ]; then cp /app/.env /app/.env; fi
+COPY .env /app/.env
 
 # Command to run the application
 ENTRYPOINT ["java", "-jar", "money-transfer-0.0.1-SNAPSHOT.jar"]
