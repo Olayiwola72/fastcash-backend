@@ -1,3 +1,9 @@
+databases:
+  - name: db # Render PG14
+    databaseName: db
+    user: dbuser
+    postgresMajorVersion: "10"
+    
 services:
 
   - type: web  # Since Render doesn't have a direct "service" type for arbitrary containers, use "web"
