@@ -5,6 +5,7 @@ services:
     runtime: docker
     dockerfilePath: ./sql.Dockerfile  # Path to your custom Dockerfile
     region: frankfurt
+    autoDeploy: false
     plan: free
     envVars:
       - key: MYSQL_ROOT_PASSWORD
@@ -13,7 +14,7 @@ services:
         value: springboot_db
 
   - type: web
-    name: springboot-app
+    name: fast-cash
     runtime: docker
     dockerfilePath: ./app.Dockerfile
     region: frankfurt
