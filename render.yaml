@@ -9,7 +9,13 @@ services:
     runtime: docker
     region: frankfurt
     plan: free
+    autoDeploy: false
     dockerfilePath: ./sql.Dockerfile
+    envVars:
+      - key: MYSQL_ROOT_PASSWORD
+        value: root
+      - key: MYSQL_DATABASE
+        value: springboot_db
 
   - type: web
     name: fast-cash
