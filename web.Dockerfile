@@ -19,8 +19,6 @@ COPY .env .
 # Copy the rest of the project files
 COPY src ./src
 
-# /app/.env
-
 # Resolve Maven dependencies
 RUN mvn -e -B dependency:resolve
 
@@ -31,7 +29,7 @@ RUN apt-get update && \
     apt-get install -y nodejs
 
 # Package the application
-RUN export $(grep -v '^#' .env | xargs) && mvn clean package -DskipTests
+RUN export $(grep -v '^#' .env | sed 's/^/"/;s/=/="/;s/$/"/;s/ /\\ /g' | xargs -0) && mvn clean package -DskipTests
 
 # Stage 2: Create the final image
 FROM eclipse-temurin:17-jre-alpine
