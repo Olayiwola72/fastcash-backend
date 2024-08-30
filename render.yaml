@@ -2,20 +2,28 @@ databases:
   - name: postgresql
     region: frankfurt
     plan: free
-    
+
+envVarGroups:
+- name: mysql
+  envVars:
+  - key: MYSQL_DATABASE
+    value: springboot_db
+  - key: MYSQL_ROOT_PASSWORD
+    generateValue: true
+
 services:
-  - type: web
+  - type: pserv
     name: mysql
-    runtime: docker
-    region: frankfurt
     plan: free
-    autoDeploy: false
     dockerfilePath: ./sql.Dockerfile
+    runtime: docker
+    autoDeploy: false
+    disk:
+      name: mysql
+      mountPath: /var/lib/mysql
+      sizeGB: 1
     envVars:
-      - key: MYSQL_ROOT_PASSWORD
-        value: root
-      - key: MYSQL_DATABASE
-        value: springboot_db
+    - fromGroup: mysql
 
   - type: web
     name: fast-cash
