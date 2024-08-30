@@ -10,6 +10,8 @@ envVarGroups:
     value: springboot_db
   - key: MYSQL_ROOT_PASSWORD
     generateValue: true
+  - key: PORT
+    value: 3306
 
 services:
   - type: pserv
@@ -17,11 +19,7 @@ services:
     plan: free
     dockerfilePath: ./sql.Dockerfile
     runtime: docker
-    autoDeploy: false
-    disk:
-      name: mysql
-      mountPath: /var/lib/mysql
-      sizeGB: 1
+    autoDeploy: true
     envVars:
     - fromGroup: mysql
 
