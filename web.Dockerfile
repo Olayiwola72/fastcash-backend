@@ -16,11 +16,10 @@ COPY pom.xml .
 # Copy the rest of the project files
 COPY src /app/src
 
+COPY .env /app/.env
+
 # Resolve Maven dependencies
 RUN mvn -e -B dependency:resolve
-
-# Optionally copy .env if it exists
-# RUN if [ -f /app/.env ]; then cp /app/.env /app/.env; fi
 
 # Install Node.js (for Node.js version 22.x)
 RUN apt-get update && \
