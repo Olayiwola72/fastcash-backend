@@ -30,7 +30,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @ApiBaseUrlPrefix
-@RequestMapping("${endpoint.auth}")
+@RequestMapping("${app.api.auth-path}")
 @Tag(name = "Auth Controller", description = "Auth Controller API")
 public class AuthController {
 	
@@ -57,7 +57,7 @@ public class AuthController {
 	})
 	@SecurityRequirement(name = "Basic Auth")
 	@PreAuthorize("hasRole('USER')")
-	@PostMapping(path = "${endpoint.token}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "${app.api.token-path}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<TokenResponse> token(
 		Authentication authentication,
 		@RequestHeader(value = "User-Agent", defaultValue = "Unknown Device") String userAgent
@@ -73,7 +73,7 @@ public class AuthController {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = APIResponse.class)) }),
 	})
 	@SecurityRequirement(name = "Bearer Key")
-	@PostMapping(path = "${endpoint.login}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "${app.api.login-path}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<APIResponse> login(
 		Authentication authentication,
 		@RequestHeader(value = "User-Agent", defaultValue = "Unknown Device") String userAgent

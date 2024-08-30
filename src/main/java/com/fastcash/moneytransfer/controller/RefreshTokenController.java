@@ -28,8 +28,8 @@ import jakarta.validation.Valid;
 @RestController
 @Validated
 @ApiBaseUrlPrefix
-@RequestMapping("${endpoint.auth}")
-@Tag(name = "RefreshTokenController", description = "Refresh Controller API")
+@RequestMapping("${app.api.auth-path}")
+@Tag(name = "RefreshTokenControler", description = "Refresh Controller API")
 public class RefreshTokenController {
 
     private final RefreshTokenService refreshTokenService;
@@ -44,7 +44,7 @@ public class RefreshTokenController {
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Refresh token generated successfully", content = {
 			@Content(schema = @Schema(implementation = TokenResponse.class)) }),
 	})
-	@PostMapping(path = "${endpoint.token.refresh}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "${app.api.token-refresh-path}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TokenResponse> refreshtoken(@Valid @RequestBody TokenRefreshRequest request, HttpServletRequest httpServletRequest) {
         String requestRefreshToken = request.refreshToken();
 

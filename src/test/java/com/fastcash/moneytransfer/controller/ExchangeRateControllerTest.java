@@ -15,7 +15,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -25,6 +24,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.thymeleaf.TemplateEngine;
 
+import com.fastcash.moneytransfer.config.ApiProperties;
 import com.fastcash.moneytransfer.config.MessageSourceConfig;
 import com.fastcash.moneytransfer.config.PasswordConfig;
 import com.fastcash.moneytransfer.config.RsaKeyConfig;
@@ -128,6 +128,10 @@ class ExchangeRateControllerTest {
     @Mock
     private TemplateEngine mockTemplateEngine;
     
+    @Autowired
+    private ApiProperties apiProperties;
+    
+    
     private ExchangeRateResponse mockExchangeRateResponse;
     private ExchangeRateResponse mockExchangeAmountResponse;
     
@@ -137,15 +141,6 @@ class ExchangeRateControllerTest {
     private final BigDecimal conversionRate = BigDecimal.valueOf(0.8412);
     private final BigDecimal conversionResult = BigDecimal.ONE;
     
-    private final String exchageRateEndpoint;
-    
-    public ExchangeRateControllerTest(
-        @Value("${api.base.url}") String apiBaseUrl, 
-        @Value("${endpoint.exchange.rate}") String exchageRateEndpoint
-    ) {
-        this.exchageRateEndpoint = apiBaseUrl + exchageRateEndpoint;
-    }
-
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -162,7 +157,7 @@ class ExchangeRateControllerTest {
         when(exchangeRateService.getExchangeRate(anyString(), anyString())).thenReturn(mockExchangeRateResponse);
 
         // When / Then
-        mockMvc.perform(get(exchageRateEndpoint)
+        mockMvc.perform(get(apiProperties.fullExchangeRatePath())
                 .param("baseCurrency", baseCurrency)
                 .param("targetCurrency", targetCurrency)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -183,7 +178,7 @@ class ExchangeRateControllerTest {
         when(exchangeRateService.getExchangeAmount(anyString(), anyString(), any(BigDecimal.class))).thenReturn(mockExchangeAmountResponse);
 
         // When / Then
-        mockMvc.perform(get(exchageRateEndpoint)
+        mockMvc.perform(get(apiProperties.fullExchangeRatePath())
                 .param("baseCurrency", baseCurrency)
                 .param("targetCurrency", targetCurrency)
                 .param("amount", amount.toString())

@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -21,6 +20,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fastcash.moneytransfer.annotation.ApiBaseUrlPrefix;
+import com.fastcash.moneytransfer.config.ApiProperties;
 import com.fastcash.moneytransfer.enums.AuthMethod;
 import com.fastcash.moneytransfer.enums.Currency;
 import com.fastcash.moneytransfer.model.User;
@@ -48,21 +48,11 @@ class AuthControllerTest {
 	@Autowired
 	private RefreshTokenRepository refreshTokenRepository;
 	
+	@Autowired
+	ApiProperties apiProperties;
+	
 	private User user;
 	
-	private final String tokenEndpoint;
-	private final String loginEndpoint;
-	
-    public AuthControllerTest(
-    	@Value("${api.base.url}") String apiBaseUrl, 
-    	@Value("${endpoint.auth}") String authEndpoint,
-    	@Value("${endpoint.token}") String tokenEndpoint,
-    	@Value("${endpoint.login}") String loginEndpoint
-    ) {
-    	this.tokenEndpoint = apiBaseUrl + authEndpoint + tokenEndpoint;
-        this.loginEndpoint = apiBaseUrl + authEndpoint + loginEndpoint;
-    }
-    
     @BeforeEach
 	void setUp() {
     	String email = "login@test.com";
@@ -85,7 +75,7 @@ class AuthControllerTest {
 	
 	@Test
 	void unauthenticatedRequestShouldReturnUnauthorized401() throws Exception {
-		MockHttpServletResponse response = UtilsTest.mockHttpPostRequestWithBasicAuth(mockMvc, tokenEndpoint, "username", "password");
+		MockHttpServletResponse response = UtilsTest.mockHttpPostRequestWithBasicAuth(mockMvc, apiProperties.fullTokenPath(), "username", "password");
 
 		// Validate against the MockHttpServletResponse
 		assertEquals(HttpStatus.UNAUTHORIZED.value(), response.getStatus());
@@ -94,7 +84,7 @@ class AuthControllerTest {
 	@Test
 	@WithMockUser(username = "admin", roles = {})
 	void unauthorizedUserShouldReturnForbidden() throws Exception {
-		MockHttpServletResponse response = UtilsTest.mockHttpPostRequest(mockMvc, tokenEndpoint);
+		MockHttpServletResponse response = UtilsTest.mockHttpPostRequest(mockMvc, apiProperties.fullTokenPath());
 		
 		// Validate against the MockHttpServletResponse
 		assertEquals(HttpStatus.FORBIDDEN.value(), response.getStatus());
@@ -102,7 +92,7 @@ class AuthControllerTest {
 	
 	@Test
 	void testToken() throws Exception {
-		MockHttpServletResponse response = UtilsTest.mockHttpPostRequestWithBasicAuth(mockMvc, tokenEndpoint, user.getEmail(), "password");
+		MockHttpServletResponse response = UtilsTest.mockHttpPostRequestWithBasicAuth(mockMvc, apiProperties.fullTokenPath(), user.getEmail(), "password");
 				
 		// Validate against the MockHttpServletResponse
 		assertEquals(HttpStatus.OK.value(), response.getStatus());
@@ -118,7 +108,7 @@ class AuthControllerTest {
 	
 	@Test
 	void testLogin() throws Exception {
-		MockHttpServletResponse response = UtilsTest.mockHttpPostRequestWithBasicAuth(mockMvc, loginEndpoint, user.getEmail(), "password");
+		MockHttpServletResponse response = UtilsTest.mockHttpPostRequestWithBasicAuth(mockMvc, apiProperties.fullLoginPath(), user.getEmail(), "password");
 				
 		// Validate against the MockHttpServletResponse
 		assertEquals(HttpStatus.OK.value(), response.getStatus());

@@ -25,7 +25,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @ApiBaseUrlPrefix
-@RequestMapping("${endpoint.exchange.rate}")
+@RequestMapping("${app.api.exchange-rate-path}")
 @Tag(name = "Exchange Rate Controller", description = "Exchange Rate Controller API")
 public class ExchangeRateController {
 	private final ExchangeRateService exchangeRateService;

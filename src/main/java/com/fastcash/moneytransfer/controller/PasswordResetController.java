@@ -26,7 +26,7 @@ import jakarta.validation.Valid;
 @RestController
 @Validated
 @ApiBaseUrlPrefix
-@RequestMapping("${endpoint.password}")
+@RequestMapping("${app.api.password-path}")
 public class PasswordResetController {
 
     private final PasswordResetTokenService passwordResetTokenService;
@@ -41,7 +41,7 @@ public class PasswordResetController {
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Password reset link sent to your email.", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = APIResponse.class)) }),
 	})
-    @PostMapping("${endpoint.password.forgot}")
+    @PostMapping("${app.api.password-forgot-path}")
     public ResponseEntity<APIResponse> forgotPassword(@Valid @RequestBody ForgotPasswordRequest request) {
         passwordResetTokenService.createPasswordResetToken(request.email());
 
@@ -59,7 +59,7 @@ public class PasswordResetController {
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Password reset successful.", content = {
 		@Content(mediaType = "application/json", schema = @Schema(implementation = APIResponse.class)) }),
 	})
-    @PostMapping(path = "${endpoint.password.reset}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "${app.api.password-reset-path}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<APIResponse> resetPassword(@Valid @RequestBody ResetPasswordRequest request) {
         passwordResetTokenService.resetPassword(request.token(), request.password());
         

@@ -45,15 +45,7 @@ public class SecurityConfig {
 	
 	private final String[] authWhitelistUrls;
 	
-	private final String apiBaseUrl;
-	
-	private final String authEndpoint;
-	
-	private final String userEndpoint;
-	
-	private final String accountEndpoint;
-	
-	private final String passwordEndpoint;
+	private final ApiProperties apiProperties;
 	
 	private final RsaKeyConfig rsaKeys;
 	
@@ -71,11 +63,7 @@ public class SecurityConfig {
 	
 	public SecurityConfig(
 			@Value("${auth.whitelist.urls}") String[] authWhitelistUrls,
-			@Value("${api.base.url}") String apiBaseUrl,
-			@Value("${endpoint.auth}") String authEndpoint,
-			@Value("${endpoint.user}") String userEndpoint,
-			@Value("${endpoint.account}") String accountEndpoint,
-			@Value("${endpoint.password}") String passwordEndpoint,
+			ApiProperties apiProperties,
 			RsaKeyConfig rsaKeys,
 			PasswordEncoder passwordEncoder,
 			UserService userService, 
@@ -85,11 +73,7 @@ public class SecurityConfig {
 			AccountUpdateAuthorizationManager accountUpdateAuthorizationManager
 			) {
 		this.authWhitelistUrls = authWhitelistUrls;
-		this.authEndpoint = authEndpoint;
-		this.apiBaseUrl = apiBaseUrl;
-		this.userEndpoint = userEndpoint;
-		this.accountEndpoint = accountEndpoint;
-		this.passwordEndpoint = passwordEndpoint;
+		this.apiProperties = apiProperties;
 		this.rsaKeys = rsaKeys;
 		this.passwordEncoder = passwordEncoder;
 		this.userService = userService;
@@ -103,14 +87,14 @@ public class SecurityConfig {
 	@Order(1)
 	public SecurityFilterChain apiSecurityFilterChain(HttpSecurity http, InternalExternalUserFilter internalExternalUserFilter,  AuthenticationProvider authenticationProvider) throws Exception {
 		return http
-			.securityMatcher(apiBaseUrl+"/**")
+			.securityMatcher(apiProperties.baseUrl() + apiProperties.version() +"/**")
 			.authorizeHttpRequests(auth -> auth
-					.requestMatchers(HttpMethod.PUT, apiBaseUrl + userEndpoint + "/**").access(userUpdateAuthorizationManager) // The authorization rule is defined in the UserUpdateAuthorizationManager
-					.requestMatchers(HttpMethod.PATCH, apiBaseUrl + userEndpoint + "/**").access(userUpdateAuthorizationManager) // The authorization rule is defined in the UserUpdateAuthorizationManager
-					.requestMatchers(HttpMethod.DELETE, apiBaseUrl + userEndpoint + "/**").access(userUpdateAuthorizationManager) // The authorization rule is defined in the UserUpdateAuthorizationManager
-					.requestMatchers(HttpMethod.PUT, apiBaseUrl + accountEndpoint + "/**").access(accountUpdateAuthorizationManager) // The authorization rule is defined in the AccountUpdateAuthorizationManager
-					.requestMatchers(HttpMethod.POST, apiBaseUrl + passwordEndpoint + "/**").permitAll()
-					.requestMatchers(apiBaseUrl + authEndpoint + "/**").permitAll()
+					.requestMatchers(HttpMethod.PUT, apiProperties.fullUserPath() + "/**").access(userUpdateAuthorizationManager) // The authorization rule is defined in the UserUpdateAuthorizationManager
+					.requestMatchers(HttpMethod.PATCH, apiProperties.fullUserPath() + "/**").access(userUpdateAuthorizationManager) // The authorization rule is defined in the UserUpdateAuthorizationManager
+					.requestMatchers(HttpMethod.DELETE, apiProperties.fullUserPath() + "/**").access(userUpdateAuthorizationManager) // The authorization rule is defined in the UserUpdateAuthorizationManager
+					.requestMatchers(HttpMethod.PUT, apiProperties.fullAccountPath() + "/**").access(accountUpdateAuthorizationManager) // The authorization rule is defined in the AccountUpdateAuthorizationManager
+					.requestMatchers(HttpMethod.POST, apiProperties.fullPasswordPath() + "/**").permitAll()
+					.requestMatchers(apiProperties.fullAuthPath() + "/**").permitAll()
 					.anyRequest()	              
 	                .authenticated()
 				)

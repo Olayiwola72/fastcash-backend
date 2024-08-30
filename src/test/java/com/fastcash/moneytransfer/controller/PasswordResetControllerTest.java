@@ -14,7 +14,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -26,6 +25,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.thymeleaf.TemplateEngine;
 
 import com.fastcash.moneytransfer.annotation.ApiBaseUrlPrefix;
+import com.fastcash.moneytransfer.config.ApiProperties;
 import com.fastcash.moneytransfer.config.MessageSourceConfig;
 import com.fastcash.moneytransfer.config.PasswordConfig;
 import com.fastcash.moneytransfer.config.RsaKeyConfig;
@@ -107,7 +107,8 @@ class PasswordResetControllerTest {
     @MockBean
     private UserRepository userRepository;
     
-    private final String passwordEndpoint;
+    @Autowired
+    private ApiProperties apiProperties;
     
     private final String email = "reset@email.com";
 	private final String token = "token";
@@ -115,13 +116,6 @@ class PasswordResetControllerTest {
     
 	private User user;
 	
-    public PasswordResetControllerTest(
-    	@Value("${api.base.url}") String apiBaseUrl, 
-    	@Value("${endpoint.password}") String passwordEndpoint
-    ) {
-    	this.passwordEndpoint = apiBaseUrl + passwordEndpoint;
-    };
-    
     @BeforeEach
 	void setUp() {
 		MockitoAnnotations.openMocks(this);
@@ -145,7 +139,7 @@ class PasswordResetControllerTest {
 		
         // When & Then
     	mockMvc.perform(
-    		MockMvcRequestBuilders.post(passwordEndpoint + "/forgot")
+    		MockMvcRequestBuilders.post(apiProperties.fullPasswordForgotPath())
 	            .contentType(MediaType.APPLICATION_JSON)
 	            .content(objectMapper.writeValueAsString(request))
             )
@@ -165,7 +159,7 @@ class PasswordResetControllerTest {
 		
         // When & Then
     	mockMvc.perform(
-    		MockMvcRequestBuilders.post(passwordEndpoint + "/reset")
+    		MockMvcRequestBuilders.post(apiProperties.fullPasswordResetPath())
 	            .contentType(MediaType.APPLICATION_JSON)
 	            .content(objectMapper.writeValueAsString(request))
             )

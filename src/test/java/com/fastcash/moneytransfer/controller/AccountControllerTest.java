@@ -16,7 +16,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -30,6 +29,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.thymeleaf.TemplateEngine;
 
+import com.fastcash.moneytransfer.config.ApiProperties;
 import com.fastcash.moneytransfer.config.MessageSourceConfig;
 import com.fastcash.moneytransfer.config.PasswordConfig;
 import com.fastcash.moneytransfer.config.RsaKeyConfig;
@@ -139,17 +139,11 @@ class AccountControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
     
-    private final String accountEndpoint;
+    @Autowired
+    private ApiProperties apiProperties;
     
     private AccountRequest accountRequest;
     
-	public AccountControllerTest(
-    	@Value("${api.base.url}") String apiBaseUrl, 
-    	@Value("${endpoint.account}") String accountEndpoint
-    ) {
-    	this.accountEndpoint = apiBaseUrl + accountEndpoint;
-    }
-	
 	@BeforeEach
 	void setUp() {
 		 accountRequest = new AccountRequest(true);
@@ -177,7 +171,7 @@ class AccountControllerTest {
 
         // When & Then
     	mockMvc.perform(
-    		MockMvcRequestBuilders.put(accountEndpoint + "/{id}", userId)
+    		MockMvcRequestBuilders.put(apiProperties.fullAccountPath() + "/{id}", userId)
 	            .contentType(MediaType.APPLICATION_JSON)
 	            .content(objectMapper.writeValueAsString(accountRequest))
             )
@@ -200,7 +194,7 @@ class AccountControllerTest {
 
 
         // When & Then
-        mockMvc.perform(MockMvcRequestBuilders.put(accountEndpoint + "/{id}", userId)
+        mockMvc.perform(MockMvcRequestBuilders.put(apiProperties.fullAccountPath() + "/{id}", userId)
                 .contentType("application/json")
                 .content(objectMapper.writeValueAsString(accountRequest)))
                 .andExpect(status().isBadRequest());

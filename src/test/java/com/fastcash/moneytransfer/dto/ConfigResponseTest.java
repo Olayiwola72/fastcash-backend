@@ -9,7 +9,7 @@ import com.fastcash.moneytransfer.enums.Currency;
 import com.fastcash.moneytransfer.enums.TransactionType;
 import com.fastcash.moneytransfer.util.DateFormatter;
 
-class EnumResponseTest {
+class ConfigResponseTest {
 	
 	@Test
 	void testEnumResponseDefaultConstructor() {

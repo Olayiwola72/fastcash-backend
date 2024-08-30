@@ -37,7 +37,7 @@ import jakarta.validation.Valid;
 @RestController
 @ApiBaseUrlPrefix
 @Validated
-@RequestMapping("${endpoint.transfer}")
+@RequestMapping("${app.api.transfer-path}")
 @Tag(name = "Transfer Controller", description = "Transfer Controller API")
 public class MoneyTransferController {
 	private final MoneyTransferService moneyTransferService;

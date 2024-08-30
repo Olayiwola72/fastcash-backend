@@ -53,7 +53,7 @@ import jakarta.validation.constraints.NotNull;
 @RestController
 @Validated
 @ApiBaseUrlPrefix
-@RequestMapping("${endpoint.user}")
+@RequestMapping("${app.api.user-path}")
 @Tag(name = "User Controller", description = "User Controller API")
 public class UserController {
 

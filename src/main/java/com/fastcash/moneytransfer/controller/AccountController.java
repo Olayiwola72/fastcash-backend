@@ -34,7 +34,7 @@ import jakarta.validation.Valid;
 @RestController
 @Validated
 @ApiBaseUrlPrefix
-@RequestMapping("${endpoint.account}")
+@RequestMapping("${app.api.account-path}")
 @Tag(name = "Account Controller", description = "Account Controller API")
 public class AccountController {
 	
@@ -42,7 +42,11 @@ public class AccountController {
 	private final UserService userService;
 	private final ReloadableResourceBundleMessageSource messageSource;
 	
-	public AccountController(AccountService accountService, UserService userService, ReloadableResourceBundleMessageSource messageSource) {
+	public AccountController(
+		AccountService accountService, 
+		UserService userService, 
+		ReloadableResourceBundleMessageSource messageSource
+	) {
 		this.accountService = accountService;
 		this.userService = userService;
 		this.messageSource = messageSource;

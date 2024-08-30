@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import com.fastcash.moneytransfer.config.ApiProperties;
 import com.fastcash.moneytransfer.constant.Constants;
 import com.fastcash.moneytransfer.enums.NotificationType;
 import com.fastcash.moneytransfer.model.FailedNotification;
@@ -36,10 +37,10 @@ public class EmailNotificationService implements EmailNotifiable {
     private final NotificationContextRepository notificationContextRepository;
     private final UserRepository userRepository;
     private final MessageSource messageSource;
+    private final ApiProperties apiProperties;
     private final String companyName;
     private final String companyPage;
     private final String logoUrl;
-    private final String resetPasswordUrl;
     
     public EmailNotificationService(
             JavaMailSender javaMailSender,
@@ -51,7 +52,8 @@ public class EmailNotificationService implements EmailNotifiable {
             @Value("${app.companyName}") String companyName,
             @Value("${app.companyPage}") String companyPage,
             @Value("${app.logoUrl}") String logoUrl,
-            @Value("${endpoint.resetPasswordUrl}") String resetPasswordUrl
+            ApiProperties apiProperties
+            
         ) {
             this.javaMailSender = javaMailSender;
             this.templateEngine = templateEngine;
@@ -59,10 +61,10 @@ public class EmailNotificationService implements EmailNotifiable {
             this.notificationContextRepository = notificationContextRepository;
             this.userRepository = userRepository;
             this.messageSource = messageSource;
+            this.apiProperties = apiProperties;
             this.companyName = companyName;
             this.companyPage = companyPage;
             this.logoUrl = logoUrl;
-            this.resetPasswordUrl = resetPasswordUrl;
         }
     
     @Async
@@ -174,7 +176,7 @@ public class EmailNotificationService implements EmailNotifiable {
         context.setVariable("transactionExternalAccountIdAndCurrency", notificationContext.getTransactionExternalAccountIdAndCurrency()); // Pass transactionExternalAccountIdAndCurrency to template
         
         context.setVariable("passwordRestTokenExpiryHours", Constants.PASSWORD_RESET_TOKEN_EXPIRY_HOURS); // Pass passwordRestTokenExpiryHours to template
-        context.setVariable("resetUrl", resetPasswordUrl + "?token=" + notificationContext.getToken()); // Pass resetUrl to template
+        context.setVariable("resetUrl", apiProperties.resetPasswordUrlPath() + "?token=" + notificationContext.getToken()); // Pass resetUrl to template
         
         return templateEngine.process(template, context);
     }

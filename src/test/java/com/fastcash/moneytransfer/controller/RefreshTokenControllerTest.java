@@ -29,6 +29,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.thymeleaf.TemplateEngine;
 
+import com.fastcash.moneytransfer.config.ApiProperties;
 import com.fastcash.moneytransfer.config.MessageSourceConfig;
 import com.fastcash.moneytransfer.config.PasswordConfig;
 import com.fastcash.moneytransfer.config.RsaKeyConfig;
@@ -149,6 +150,9 @@ class RefreshTokenControllerTest {
     @Autowired
     private MockMvc mockMvc;
     
+    @Autowired
+    private ApiProperties apiProperties;
+    
     private User user;
     private RefreshToken refreshToken;
     private String token;
@@ -175,7 +179,7 @@ class RefreshTokenControllerTest {
 
         TokenRefreshRequest request = new TokenRefreshRequest(refreshTokenValue);
 
-        mockMvc.perform(post("/api/v1/" + authEndpoint + "/token/refresh")  // Adjust the URL as per your configuration
+        mockMvc.perform(post(apiProperties.fullTokenRefreshPath())  // Adjust the URL as per your configuration
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(request)))
                 .andExpect(status().isOk())
@@ -193,7 +197,7 @@ class RefreshTokenControllerTest {
         
         TokenRefreshRequest request = new TokenRefreshRequest(refreshTokenValue);
 
-        mockMvc.perform(post("/api/v1/" + authEndpoint + "/token/refresh")
+        mockMvc.perform(post(apiProperties.fullTokenRefreshPath())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(request)))
                 .andExpect(status().isBadRequest())
@@ -208,7 +212,7 @@ class RefreshTokenControllerTest {
 
         TokenRefreshRequest request = new TokenRefreshRequest(refreshTokenValue);
 
-        mockMvc.perform(post("/api/v1/" + authEndpoint + "/token/refresh")  // Adjust the URL as per your configuration
+        mockMvc.perform(post(apiProperties.fullTokenRefreshPath())  // Adjust the URL as per your configuration
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(request)))
                 .andExpect(status().isBadRequest())

@@ -16,7 +16,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -31,6 +30,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.thymeleaf.TemplateEngine;
 
+import com.fastcash.moneytransfer.config.ApiProperties;
 import com.fastcash.moneytransfer.config.MessageSourceConfig;
 import com.fastcash.moneytransfer.config.PasswordConfig;
 import com.fastcash.moneytransfer.config.RestTemplateConfig;
@@ -185,8 +185,9 @@ public class MoneyTransferControllerTest {
     @MockBean
     private ValidAccountValidator validAccountValidator;
     
-	private final String transferEndpoint;
-	
+    @Autowired
+    private ApiProperties apiProperties;
+    
 	private User user;
 	
 	private MoneyTransfer moneyTransfer;
@@ -202,13 +203,6 @@ public class MoneyTransferControllerTest {
         
         moneyTransfer = new MoneyTransfer();
         moneyTransfer.setTransactionId("12345");
-    }
-    
-    public MoneyTransferControllerTest(
-    	@Value("${api.base.url}") String apiBaseUrl, 
-    	@Value("${endpoint.transfer}") String transferEndpoint
-    ) {
-        this.transferEndpoint = apiBaseUrl + transferEndpoint;
     }
 
     @Test
@@ -233,7 +227,7 @@ public class MoneyTransferControllerTest {
         when(messageSource.getMessage(eq("TransferSuccess"), any(), any())).thenReturn("Transfer successful");
         
         // Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.post(transferEndpoint) // Use the actual endpoint here
+        mockMvc.perform(MockMvcRequestBuilders.post(apiProperties.fullTransferPath()) // Use the actual endpoint here
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request))) // Adjust JSON payload as needed
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -256,7 +250,7 @@ public class MoneyTransferControllerTest {
         when(moneyTransferService.create(moneyTransfer, user)).thenThrow(new InsufficientBalanceException("Insufficient balance","InsufficientBalance", userAccount, request.amount(), "fieldName"));
 
         // Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.post(transferEndpoint) // Use the actual endpoint here
+        mockMvc.perform(MockMvcRequestBuilders.post(apiProperties.fullTransferPath()) // Use the actual endpoint here
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request))) // Adjust JSON payload as needed
         .andExpect(MockMvcResultMatchers.status().isBadRequest());

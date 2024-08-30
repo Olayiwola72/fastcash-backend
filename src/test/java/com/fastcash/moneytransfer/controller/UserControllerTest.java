@@ -25,7 +25,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -36,6 +35,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.thymeleaf.TemplateEngine;
 
+import com.fastcash.moneytransfer.config.ApiProperties;
 import com.fastcash.moneytransfer.config.MessageSourceConfig;
 import com.fastcash.moneytransfer.config.PasswordConfig;
 import com.fastcash.moneytransfer.config.RsaKeyConfig;
@@ -150,15 +150,9 @@ class UserControllerTest {
     @MockBean
     private RefreshTokenRepository refreshTokenRepository;
     
-	private final String userEndpoint;
+    @Autowired
+    private ApiProperties apiProperties;
     
-    UserControllerTest(
-    	@Value("${api.base.url}") String apiBaseUrl, 
-    	@Value("${endpoint.user}") String userEndpoint
-    ) {
-        this.userEndpoint = apiBaseUrl + userEndpoint;
-    }
-
     private User user;
     private UserRequest userRequest;
     private PasswordUpdateRequest passwordUpdateRequest;
@@ -183,7 +177,7 @@ class UserControllerTest {
     void testGetUserById() throws Exception {
         when(userService.findById(anyLong())).thenReturn(Optional.of(user));
 
-        mockMvc.perform(get(userEndpoint + "/{id}", user.getId())
+        mockMvc.perform(get(apiProperties.fullUserPath() + "/{id}", user.getId())
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -202,7 +196,7 @@ class UserControllerTest {
         when(refreshTokenService.createRefreshToken(eq(user), eq(userAgent))).thenReturn(refreshToken);
 
         // Perform POST request with User-Agent header
-        mockMvc.perform(post(userEndpoint)
+        mockMvc.perform(post(apiProperties.fullUserPath())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(userRequest)) // Adjust JSON payload as needed
                 .header("User-Agent", userAgent)) // Include User-Agent header
@@ -233,7 +227,7 @@ class UserControllerTest {
                              "}";
 
         // Perform POST request with User-Agent header
-        mockMvc.perform(post(userEndpoint + "/google")
+        mockMvc.perform(post(apiProperties.fullUserPath() + "/google")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonContent)
                 .header("User-Agent", userAgent)) // Include User-Agent header
@@ -255,7 +249,7 @@ class UserControllerTest {
         when(userRequestMapper.toUpdateUser(any(User.class), any(UserUpdateRequest.class))).thenReturn(user);
         when(userService.update(any(User.class))).thenReturn(user);
 
-        mockMvc.perform(put(userEndpoint + "/{id}", user.getId())
+        mockMvc.perform(put(apiProperties.fullUserPath() + "/{id}", user.getId())
                 .contentType(MediaType.APPLICATION_JSON)
         		.content(objectMapper.writeValueAsString(userUpdateRequest))) // Adjust JSON payload as needed
                 .andExpect(status().isOk())
@@ -274,7 +268,7 @@ class UserControllerTest {
         when(userRequestMapper.toUpdateUserPassword(any(User.class), any(PasswordUpdateRequest.class))).thenReturn(user);
         when(userService.updatePassword(any(User.class))).thenReturn(user);
 
-        mockMvc.perform(patch(userEndpoint + "/{id}", user.getId())
+        mockMvc.perform(patch(apiProperties.fullUserPath() + "/{id}", user.getId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(passwordUpdateRequest))) // Adjust JSON payload as needed
                 .andExpect(status().isOk())
@@ -291,7 +285,7 @@ class UserControllerTest {
     void testDisableUser() throws Exception {
         when(userService.findById(anyLong())).thenReturn(Optional.of(user));
 
-        mockMvc.perform(delete(userEndpoint + "/{id}", user.getId())
+        mockMvc.perform(delete(apiProperties.fullUserPath() + "/{id}", user.getId())
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON)).andExpect(jsonPath("$.successMessage").isNotEmpty()) // successMessage is not null

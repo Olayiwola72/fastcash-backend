@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @ApiBaseUrlPrefix
-@RequestMapping("/enums")
+@RequestMapping("${app.api.config-path}")
 @Tag(name = "Config Controller", description = "Config Controller API")
 public class ConfigController {
 	@Operation(summary = "Get Default Config")
