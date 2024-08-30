@@ -5,6 +5,13 @@ databases:
     
 services:
   - type: web
+    name: mysql
+    runtime: docker
+    region: frankfurt
+    plan: free
+    dockerfilePath: ./sql.Dockerfile
+
+  - type: web
     name: fast-cash
     runtime: docker
     region: frankfurt

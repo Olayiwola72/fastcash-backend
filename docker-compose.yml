@@ -5,8 +5,8 @@ services:
       context: ./
       dockerfile: sql.Dockerfile
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=springboot_db
+      - MYSQL_ROOT_PASSWORD=root # Override .env
+      - MYSQL_DATABASE=${SPRING_DATASOURCE_NAME} # Get from .env
     ports:
       - 3307:3306  #HOST:CONTAINER
 
@@ -17,11 +17,10 @@ services:
     ports:
       - "8086:8086"
     environment:
-      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT:  org.hibernate.dialect.MySQL8Dialect
-      SPRING_DATASOURCE_NAME: springboot_db
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-      SPRING_PROFILES_ACTIVE: prod
-      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/${SPRING_DATASOURCE_NAME}?autoReconnect=true&createDatabaseIfNotExist=true
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT:  org.hibernate.dialect.MySQL8Dialect # Override .env
+      SPRING_DATASOURCE_USERNAME: root # Override .env
+      SPRING_DATASOURCE_PASSWORD: root # Override .env
+      SPRING_PROFILES_ACTIVE: prod # set profile
+      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/${SPRING_DATASOURCE_NAME}?autoReconnect=true&createDatabaseIfNotExist=true # Override .env
     depends_on:
       - docker-mysql
