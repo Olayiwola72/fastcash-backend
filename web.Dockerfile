@@ -31,16 +31,7 @@ RUN apt-get update && \
 # Package the application
 # RUN export $(grep -v '^#' .env | xargs) && mvn clean package -DskipTests
 
-# RUN export $(grep -v '^#' .env | awk -F= '{gsub(/ /,"\\ "); print $1"=\""substr($0, index($0,$2))"\""}' | xargs -d '\n') && mvn clean package -DskipTests
-
-
-# Run the loop to export environment variables, then build
-RUN while IFS='=' read -r key value; do \
-      if [[ -n "$key" && ! "$key" =~ ^# ]]; then \
-        value=$(echo "$value" | sed 's/^ *//;s/ *$//;s/^"\(.*\)"$/\1/'); \
-        export "$key=$value"; \
-      fi; \
-    done < .env && mvn clean package -DskipTests
+RUN export $(grep -v '^#' .env | awk -F= '{gsub(/ /,"\\ "); print $1"=\""substr($0, index($0,$2))"\""}' | xargs -d '\n') && mvn clean package -DskipTests
 
 # Stage 2: Create the final image
 FROM eclipse-temurin:17-jre-alpine
