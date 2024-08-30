@@ -122,8 +122,8 @@ Check out the live  of Fast Cash here:
 Fast Cash can be deployed using Docker and Docker Compose, which simplifies the process of setting up and running the application in a containerized environment. Follow these instructions to get the application running using Docker.
 
 🛠 Prerequisites
-Docker: Install Docker
-Docker Compose: Install Docker Compose
+- **Docker: Install Docker**
+- **Docker Compose: Install Docker Compose**
 
 🚀 Quick Start
 1. **Clone the Repository:**
