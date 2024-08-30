@@ -2,10 +2,7 @@ databases:
   - name: postgresql
     region: frankfurt
     plan: free
-    ipAllowList: # required
-      - source: 0.0.0.0/0
-        description: everywhere
-
+    
 services:
   - type: web
     name: fast-cash
