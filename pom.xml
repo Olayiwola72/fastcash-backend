@@ -150,7 +150,7 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<workingDirectory>${project.basedir}/src/main/client</workingDirectory>
+							<workingDirectory>src/main/client</workingDirectory>
 							<executable>npm</executable>
 							<arguments>
 								<argument>install</argument>
