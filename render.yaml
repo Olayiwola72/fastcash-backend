@@ -12,6 +12,8 @@ services:
     healthCheckPath: /
     dockerfilePath: ./app.Dockerfile
     envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod # set profile
       - key: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
         value: org.hibernate.dialect.PostgreSQLDialect
       - key: SPRING_DATASOURCE_CONNECTION_STRING
