@@ -15,6 +15,10 @@ services:
     healthCheckPath: /
     dockerfilePath: ./web.Dockerfile
     envVars:
+      - key: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
+        value: org.hibernate.dialect.PostgreSQLDialect
+      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
+        value: update
       - key: SPRING_DATASOURCE_CONNECTION_STRING
         fromDatabase:
           name: postgresql
