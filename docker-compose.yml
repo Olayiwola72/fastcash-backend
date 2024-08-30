@@ -19,9 +19,10 @@ services:
     environment:
       SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT:  org.hibernate.dialect.MySQL8Dialect
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_DATASOURCE_NAME: springboot_db
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_PROFILES_ACTIVE: prod
-      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/springboot_db?autoReconnect=true&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/${SPRING_DATASOURCE_NAME}?autoReconnect=true&createDatabaseIfNotExist=true
     depends_on:
       - docker-mysql

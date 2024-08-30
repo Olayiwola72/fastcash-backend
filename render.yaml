@@ -10,7 +10,7 @@ services:
     region: frankfurt
     plan: free
     healthCheckPath: /
-    dockerfilePath: ./web.Dockerfile
+    dockerfilePath: ./app.Dockerfile
     envVars:
       - key: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
         value: org.hibernate.dialect.PostgreSQLDialect
