@@ -28,8 +28,14 @@ RUN apt-get update && \
     curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
     apt-get install -y nodejs
 
-# Package the application
-RUN export $(grep -v '^#' .env | xargs) && mvn clean package -DskipTests
+# # Package the application
+# RUN export $(grep -v '^#' .env | xargs) && mvn clean package -DskipTests
+
+# Next, install dotenv globally
+RUN npm install -g dotenv-cli
+
+# This method loads the .env file into the environment before running the Maven command.
+RUN dotenv -- mvn clean package -DskipTests
 
 # Stage 2: Create the final image
 FROM eclipse-temurin:17-jre-alpine

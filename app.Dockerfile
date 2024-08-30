@@ -13,7 +13,8 @@ WORKDIR /app
 # Copy the Maven project files
 COPY pom.xml .
 
-COPY .env /app/.env
+# Load environment variables
+COPY .env .
 
 # Copy the rest of the project files
 COPY src ./src
@@ -27,8 +28,14 @@ RUN apt-get update && \
     curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
     apt-get install -y nodejs
 
+# Next, install dotenv globally
+RUN npm install -g dotenv-cli
+
+# This method loads the .env file into the environment before running the Maven command.
+RUN dotenv -- mvn clean package -DskipTests
+
 # Package the application
-RUN mvn clean package -DskipTests
+# RUN export $(grep -v '^#' .env | xargs) && mvn clean package -DskipTests
 
 # Stage 2: Create the final image
 FROM eclipse-temurin:17-jre-alpine

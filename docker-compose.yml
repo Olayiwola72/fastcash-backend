@@ -17,6 +17,8 @@ services:
     ports:
       - "8086:8086"
     environment:
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT:  org.hibernate.dialect.MySQL8Dialect
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_PROFILES_ACTIVE: prod
