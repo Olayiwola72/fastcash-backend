@@ -18,9 +18,6 @@ COPY src /app/src
 
 COPY .env /app/.env
 
-# Print the .env file
-RUN echo "Contents of .env:" && cat .env
-
 # Resolve Maven dependencies
 RUN mvn -e -B dependency:resolve
 
@@ -33,8 +30,6 @@ RUN apt-get update && \
 # Package the application
 RUN export $(grep -v '^#' /app/.env | xargs) && mvn clean package -DskipTests
 
-# RUN mvn generate sources
-
 # Stage 2: Create the final image
 FROM eclipse-temurin:17-jre-alpine
 
@@ -43,9 +38,6 @@ WORKDIR /app
 
 # Copy the JAR file from the builder stage
 COPY --from=builder /app/target/money-transfer-0.0.1-SNAPSHOT.jar /app/money-transfer-0.0.1-SNAPSHOT.jar
-
-# Optionally copy .env if it exists
-# RUN if [ -f /app/.env ]; then cp /app/.env /app/.env; fi
 
 # Command to run the application
 ENTRYPOINT ["java", "-jar", "money-transfer-0.0.1-SNAPSHOT.jar"]
