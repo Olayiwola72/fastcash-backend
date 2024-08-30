@@ -29,7 +29,7 @@ public class TransactionAccount extends Account {
 	
 	@NotNull
 	@Schema(accessMode = Schema.AccessMode.READ_ONLY, description = "account balance", example = "-40.200")
-	@Column(precision = 10, scale = 3)
+	@Column(scale = 3)
 	private BigDecimal balance;
 	
 	@NotNull

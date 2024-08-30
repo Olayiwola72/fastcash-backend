@@ -40,7 +40,7 @@ public class AccountStatement extends TransferDetails {
 	@NotNull
 	private TransactionDirection direction;
 	
-	@Column(precision = 10, scale = 3)
+	@Column(scale = 3)
 	private BigDecimal balance;
 	
 	public AccountStatement() {}

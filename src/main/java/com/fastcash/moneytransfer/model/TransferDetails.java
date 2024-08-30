@@ -67,21 +67,21 @@ public class TransferDetails {
 	private String notes;
 	
 	@NotNull
-	@Column(nullable = false)
+	@Column(nullable = false, precision=15, scale = 4)
 	@DecimalMin(value = "0", inclusive = false)
 	private BigDecimal conversionRate;
 	
 	@NotNull
 	@DecimalMin(value = "0", inclusive = false)
-	@Column(nullable = false, precision = 10, scale = 3)
+	@Column(nullable = false, scale = 3)
 	private BigDecimal totalDebitedAmount;
 	
 	@NotNull       
 	@DecimalMin(value = "0", inclusive = false)
-	@Column(nullable = false, precision = 10, scale = 3)
+	@Column(nullable = false, scale = 3)
 	private BigDecimal totalCreditedAmount;
 	
-	@Column(nullable = false, precision = 10, scale = 3)
+	@Column(nullable = false, scale = 3)
 	private BigDecimal chargeAmount;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
