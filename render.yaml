@@ -14,8 +14,6 @@ services:
     envVars:
       - key: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
         value: org.hibernate.dialect.PostgreSQLDialect
-      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
-        value: update
       - key: SPRING_DATASOURCE_CONNECTION_STRING
         fromDatabase:
           name: postgresql
@@ -36,9 +34,9 @@ services:
         fromDatabase:
           name: postgresql
           property: port
-      - key: SPRING_DATASOURCE_SCHEMA
+      - key: SPRING_DATASOURCE_NAME
         fromDatabase:
           name: postgresql
           property: database
       - key: SPRING_DATASOURCE_URL
-        value: jdbc:postgresql://${SPRING_DATASOURCE_HOST}:${SPRING_DATASOURCE_PORT}/${SPRING_DATASOURCE_SCHEMA}
+        value: jdbc:postgresql://${SPRING_DATASOURCE_HOST}:${SPRING_DATASOURCE_PORT}/${SPRING_DATASOURCE_NAME}

@@ -43,6 +43,7 @@ WORKDIR /app
 # Copy the JAR file from the builder stage
 COPY --from=builder /app/target/money-transfer-0.0.1-SNAPSHOT.jar /app/money-transfer-0.0.1-SNAPSHOT.jar
 
+# Load environment variables from the builder stage
 COPY --from=builder /app/.env /app/.env
 
 # Command to run the application
