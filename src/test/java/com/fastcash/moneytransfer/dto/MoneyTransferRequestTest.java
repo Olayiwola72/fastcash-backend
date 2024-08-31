@@ -25,6 +25,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
+import org.springframework.context.MessageSource;
 
 import com.fastcash.moneytransfer.enums.Currency;
 import com.fastcash.moneytransfer.model.User;
@@ -50,6 +51,9 @@ class MoneyTransferRequestTest {
 
     @Mock
     private UserRepository userRepository;
+    
+    @Mock
+    private MessageSource messageSource;
 
     private Validator validator;
 
@@ -67,7 +71,7 @@ class MoneyTransferRequestTest {
             .thenReturn(new ValidAccountValidator(userAccountRepository));
 
         when(constraintValidatorFactory.getInstance(CurrencyMismatchValidator.class))
-            .thenReturn(new CurrencyMismatchValidator(userAccountRepository));
+            .thenReturn(new CurrencyMismatchValidator(userAccountRepository, messageSource));
 
         when(constraintValidatorFactory.getInstance(NotEmptyValidatorForCharSequence.class))
             .thenReturn(new NotEmptyValidatorForCharSequence());

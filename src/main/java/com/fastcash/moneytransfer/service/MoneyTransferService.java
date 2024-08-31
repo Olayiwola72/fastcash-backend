@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fastcash.moneytransfer.enums.NotificationType;
 import com.fastcash.moneytransfer.enums.TransactionDirection;
-import com.fastcash.moneytransfer.enums.TransactionType;
 import com.fastcash.moneytransfer.exception.InsufficientBalanceException;
 import com.fastcash.moneytransfer.model.AccountStatement;
 import com.fastcash.moneytransfer.model.Admin;
@@ -65,7 +64,7 @@ public class MoneyTransferService {
         // Check if the debit account belongs to the currently logged in user
         UserAccountMismatchValidator.handleMismatch(debitAccount, debitedUser, "debitAccount");
         
-		if(moneyTransfer.getTransactionType().equals(TransactionType.OWN_ACCOUNT)) {
+		if(moneyTransfer.getTransactionType().isInternal()) {
 			creditedUser = findUserByAccountId((UserAccount) moneyTransfer.getCreditAccount(), debitedUser);
 			creditAccount = (TransactionAccount) moneyTransfer.getCreditAccount();
             // update credit account balance if own account

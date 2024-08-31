@@ -24,6 +24,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.thymeleaf.TemplateEngine;
 
+import com.fastcash.moneytransfer.config.ApiProperties;
 import com.fastcash.moneytransfer.enums.Currency;
 import com.fastcash.moneytransfer.enums.NotificationType;
 import com.fastcash.moneytransfer.enums.TransactionDirection;
@@ -59,6 +60,9 @@ class EmailNotificationServiceTest {
     
     @Mock
     private UserRepository userRepository;
+    
+    @Mock
+    private ApiProperties apiProperties;
     
     @InjectMocks
 	private DateFormatter dateFormatter;

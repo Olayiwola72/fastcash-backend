@@ -120,13 +120,13 @@ public class GlobalExceptionHandler {
 				 
 				 try{
 					 errorMessage = messageSource.getMessage(
-			 					errorCode, 
-			 					new Object[]{
-			 								fieldName, 
-			 								rejectedValue
-			 							},
-			 					LocaleContextHolder.getLocale()
-			 			);
+	 					errorCode, 
+	 					new Object[]{
+							fieldName, 
+							rejectedValue
+						},
+	 					LocaleContextHolder.getLocale()
+			 		);
 				 }catch(NoSuchMessageException e) {}
  
 				 ErrorField errorField = new ErrorField(errorMessage, fieldName);
@@ -367,11 +367,11 @@ public class GlobalExceptionHandler {
 	
 	@Profile("prod")
 	@ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResponseEntity<ErrorResponse> handleOtherExceptions(Exception ex) {
+   	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	public ResponseEntity<ErrorResponse> handleOtherExceptions(Exception ex) {
 		ErrorResponse errorResponse = new ErrorResponse(messageSource.getMessage("InternalServerError", null, LocaleContextHolder.getLocale())); 
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
-    }
+	}
 	
 	private String extractFieldName(String pathReference) {
         int startIndex = pathReference.indexOf("[\"");

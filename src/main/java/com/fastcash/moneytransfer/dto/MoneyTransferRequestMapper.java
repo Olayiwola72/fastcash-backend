@@ -43,15 +43,15 @@ public class MoneyTransferRequestMapper {
         moneyTransfer.setNotes(moneyTransferRequest.notes());
         moneyTransfer.setTransactionType(TransactionType.valueOf(moneyTransferRequest.transactionType()));
         
-        if(moneyTransfer.getTransactionType().equals(TransactionType.INTER_BANK)) {
-        	moneyTransfer.setCreditAccount(
-				externalAccountRequestMapper.toExternalAccount(moneyTransferRequest)
-			);
-        }else {
-    		Optional<UserAccount> creditAccountOptional = accountService.findById(moneyTransferRequest.creditAccount());
+        if(moneyTransfer.getTransactionType().isInternal()) {        	
+        	Optional<UserAccount> creditAccountOptional = accountService.findById(moneyTransferRequest.creditAccount());
     		if(creditAccountOptional.isPresent()) {
     			moneyTransfer.setCreditAccount(creditAccountOptional.get());
     		}
+        }else {
+        	moneyTransfer.setCreditAccount(
+				externalAccountRequestMapper.toExternalAccount(moneyTransferRequest)
+			);
         }
 		
         moneyTransfer.setCreditCurrency(creditCurrency);

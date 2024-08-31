@@ -67,7 +67,7 @@ public class TransferDetails {
 	private String notes;
 	
 	@NotNull
-	@Column(nullable = false, precision=15, scale = 4)
+	@Column(nullable = false, precision=10)
 	@DecimalMin(value = "0", inclusive = false)
 	private BigDecimal conversionRate;
 	

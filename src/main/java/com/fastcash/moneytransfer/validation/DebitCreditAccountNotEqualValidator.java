@@ -2,7 +2,6 @@ package com.fastcash.moneytransfer.validation;
 
 import com.fastcash.moneytransfer.annotation.DebitCreditAccountNotEqual;
 import com.fastcash.moneytransfer.dto.MoneyTransferRequest;
-import com.fastcash.moneytransfer.util.ValidatorContextBuilder;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -13,7 +12,7 @@ public class DebitCreditAccountNotEqualValidator implements ConstraintValidator<
     public void initialize(DebitCreditAccountNotEqual constraintAnnotation) {
 		
 	}
-
+	
     @Override
     public boolean isValid(MoneyTransferRequest request, ConstraintValidatorContext context) {
 
@@ -21,9 +20,15 @@ public class DebitCreditAccountNotEqualValidator implements ConstraintValidator<
             return true; // Let other validators handle null values
         }
         
-        if (request.debitAccount() == request.creditAccount()) {
+        if (request.debitAccount().equals(request.creditAccount())) {
             // If accounts are equal, add a dynamic error message
-            ValidatorContextBuilder.buildConstraintViolation(context, "debitAccount");
+            
+            ConstraintValidatorContext.ConstraintViolationBuilder violationBuilder = context.buildConstraintViolationWithTemplate(context.getDefaultConstraintMessageTemplate());
+            
+        	if (violationBuilder != null) {
+                violationBuilder.addPropertyNode("debitAccount") // Specify the field associated with the error
+                	.addConstraintViolation(); // Add the violation
+            }
 
             return false;
         }
