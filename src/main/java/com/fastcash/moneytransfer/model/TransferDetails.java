@@ -90,6 +90,7 @@ public class TransferDetails {
 	
 	@NotNull 
 	@Enumerated(EnumType.STRING)
+	@Column(name = "transaction_type", length = 35)  // Specify the length here
 	private TransactionType transactionType;
 	
 	@NotNull
