@@ -12,6 +12,8 @@ services:
     healthCheckPath: /
     dockerfilePath: ./app.Dockerfile
     envVars:
+      - key: APP_COMPANY_PAGE
+        value: https://fast-cash.onrender.com
       - key: SPRING_PROFILES_ACTIVE
         value: prod # set profile
       - key: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
