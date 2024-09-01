@@ -50,6 +50,12 @@
 			<version>2.11.0</version>
 		</dependency>
 		
+		<!-- These tools allow you to manage your database schema through versioned migrations, which are easy to test, deploy, and roll back if necessary -->
+		<dependency>
+		    <groupId>org.flywaydb</groupId>
+		    <artifactId>flyway-core</artifactId>
+		</dependency>
+		
 		<!-- spring-dotenv library by Paul Schwarz to load environment variables from a .env file. This library integrates directly with Spring Boot, making it easy to use .env files without needing to manually load the variables using the Dotenv class. -->
 		<dependency>
 		    <groupId>me.paulschwarz</groupId>

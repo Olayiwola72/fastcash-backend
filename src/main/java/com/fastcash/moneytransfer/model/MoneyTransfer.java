@@ -17,6 +17,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
+/**
+ * Represents a money transfer transaction.
+ */
 @Entity
 @ValidMoneyTransfer
 public class MoneyTransfer extends TransferDetails {
