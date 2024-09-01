@@ -67,10 +67,10 @@ import com.fastcash.moneytransfer.security.TokenAuthenticationProvider;
 import com.fastcash.moneytransfer.security.UserUpdateAuthorizationManager;
 import com.fastcash.moneytransfer.service.impl.EmailNotificationService;
 import com.fastcash.moneytransfer.service.impl.ExchangeRateServiceImpl;
+import com.fastcash.moneytransfer.service.impl.UUIDTimestampTransactionIdGenerator;
 import com.fastcash.moneytransfer.util.KeyPairFileUtil;
 import com.fastcash.moneytransfer.util.RSAKeyPairGenerator;
 import com.fastcash.moneytransfer.util.TestConfig;
-import com.fastcash.moneytransfer.util.UUIDTimestampTransactionIdGenerator;
 import com.fastcash.moneytransfer.validation.UserTypeChecker;
 import com.fastcash.moneytransfer.validation.UserValidator;
 

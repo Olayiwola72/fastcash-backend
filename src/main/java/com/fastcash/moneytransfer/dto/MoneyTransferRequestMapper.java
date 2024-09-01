@@ -10,7 +10,7 @@ import com.fastcash.moneytransfer.model.MoneyTransfer;
 import com.fastcash.moneytransfer.model.User;
 import com.fastcash.moneytransfer.model.UserAccount;
 import com.fastcash.moneytransfer.service.AccountService;
-import com.fastcash.moneytransfer.util.UUIDTimestampTransactionIdGenerator;
+import com.fastcash.moneytransfer.service.impl.UUIDTimestampTransactionIdGenerator;
 
 @Component
 public class MoneyTransferRequestMapper {

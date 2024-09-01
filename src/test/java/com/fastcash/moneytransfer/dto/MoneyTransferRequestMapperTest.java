@@ -30,7 +30,7 @@ import com.fastcash.moneytransfer.service.AccountService;
 import com.fastcash.moneytransfer.service.EmailNotifiable;
 import com.fastcash.moneytransfer.service.ExternalAccountService;
 import com.fastcash.moneytransfer.service.impl.EmailNotificationService;
-import com.fastcash.moneytransfer.util.UUIDTimestampTransactionIdGenerator;
+import com.fastcash.moneytransfer.service.impl.UUIDTimestampTransactionIdGenerator;
 
 @DataJpaTest
 @Import({

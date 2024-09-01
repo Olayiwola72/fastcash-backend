@@ -1,8 +1,10 @@
-package com.fastcash.moneytransfer.util;
+package com.fastcash.moneytransfer.service.impl;
 
 import java.util.UUID;
 
 import org.springframework.stereotype.Component;
+
+import com.fastcash.moneytransfer.util.TransactionIdGenerator;
 
 @Component
 public class UUIDTimestampTransactionIdGenerator implements TransactionIdGenerator {

@@ -47,9 +47,9 @@ import com.fastcash.moneytransfer.repository.MoneyTransferRepository;
 import com.fastcash.moneytransfer.repository.UserAccountRepository;
 import com.fastcash.moneytransfer.service.impl.EmailNotificationService;
 import com.fastcash.moneytransfer.service.impl.ExchangeRateServiceImpl;
+import com.fastcash.moneytransfer.service.impl.UUIDTimestampTransactionIdGenerator;
 import com.fastcash.moneytransfer.util.DateFormatter;
 import com.fastcash.moneytransfer.util.PercentageChargeCalculator;
-import com.fastcash.moneytransfer.util.UUIDTimestampTransactionIdGenerator;
 import com.fastcash.moneytransfer.validation.UserValidator;
 
 @DataJpaTest
