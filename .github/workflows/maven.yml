@@ -38,15 +38,11 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
-    - name: Deploy using API hook
-      uses: actions/checkout@v4
-      if: github.ref == 'refs/heads/main'
-      env: 
-        deploy_url: ${{ env.DEPLOY_HOOK_URL }}
-
     - name: Deploy
       uses: actions/checkout@v4
       # Only run this step if the branch is main
       if: github.ref == 'refs/heads/main'
       env:
         deploy_url: ${{ env.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          curl "$deploy_url"
