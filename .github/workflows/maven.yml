@@ -50,4 +50,4 @@ jobs:
       env: 
         deploy_url: ${{ env.DEPLOY_HOOK_URL }}
 
-    - run: curl "$env:deploy_url"
+    - run: curl $env:deploy_url
