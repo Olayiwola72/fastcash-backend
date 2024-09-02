@@ -1,15 +1,25 @@
-name: Java CI with Maven & NPM
+name: Lint
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: # yamllint disable-line rule:truthy
+  push: null
+  pull_request: null
+
+permissions: {}
 
 jobs:
   build:
+    name: Lint
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      packages: read
+
     steps:
-    - name: Super-Linter
-      uses: super-linter/super-linter@v7.1.0
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true # Initialize and update submodules
+          # super-linter needs the full git history to get the
+          # list of files that changed across commits
+          fetch-depth: 0
