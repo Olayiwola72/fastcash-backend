@@ -39,13 +39,8 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Deploy
-      uses: actions/checkout@v4
-      with:
-        submodules: true # Initialize and update submodules
-        fetch-depth: 0   # Ensure all history is fetched so that submodules can be correctly checked out
-      # Only run this step if the branch is main
       if: github.ref == 'refs/heads/main'
+      run: |
+        curl "$deploy_url"
       env:
         deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
-        run: |
-          curl "$deploy_url"
