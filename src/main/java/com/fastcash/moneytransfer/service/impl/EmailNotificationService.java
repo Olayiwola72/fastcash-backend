@@ -50,7 +50,7 @@ public class EmailNotificationService implements EmailNotifiable {
             UserRepository userRepository,
             MessageSource messageSource,
             @Value("${app.companyName}") String companyName,
-            @Value("${app.companyPage}") String companyPage,
+            @Value("${app.company.page}") String companyPage,
             @Value("${app.logoUrl}") String logoUrl,
             ApiProperties apiProperties
             
