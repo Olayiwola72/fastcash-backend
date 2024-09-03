@@ -49,17 +49,7 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.11.0</version>
 		</dependency>
-		
-		<!-- flyway dependency -->
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-mysql</artifactId>
-        </dependency>
-		
+
 		<!-- spring-dotenv library by Paul Schwarz to load environment variables from a .env file. This library integrates directly with Spring Boot, making it easy to use .env files without needing to manually load the variables using the Dotenv class. -->
 		<dependency>
 		    <groupId>me.paulschwarz</groupId>
