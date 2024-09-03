@@ -22,6 +22,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 import org.thymeleaf.TemplateEngine;
 
 import com.fastcash.moneytransfer.annotation.ApiBaseUrlPrefix;
@@ -88,6 +90,12 @@ class PasswordResetControllerTest {
     
     @Autowired
     private ObjectMapper objectMapper;
+    
+    @MockBean
+    private PlatformTransactionManager transactionManager;
+
+    @MockBean
+    private TransactionTemplate transactionTemplate;
 
     @MockBean
     private UserService userService;
