@@ -61,5 +61,14 @@ class PasswordResetTokenRepositoryTest {
         // Then
         assertFalse(result.isPresent());
     }
+    
+    @Test
+    void testDeleteAllByUser() {
+        // When
+    	passwordResetTokenRepository.deleteAllByUser(user);
+
+        // Then
+    	assertFalse(passwordResetTokenRepository.findByToken(passwordResetToken.getToken()).isPresent());
+    }
 
 }

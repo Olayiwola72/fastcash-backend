@@ -4,11 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -105,7 +107,19 @@ class PasswordResetTokenServiceTest {
 	    // Verify interactions
 	    verify(userRequestMapper).toUpdateUserPassword(eq(resetToken.getUser()), eq(new PasswordUpdateRequest(newPassword)));
 	    verify(userService).updatePassword(eq(updatedUser));
-	    verify(tokenRepository).delete(resetToken);
+	    verify(tokenRepository).deleteAllByUser(eq(updatedUser));
 	}
+	
+	@Test
+    void testAsyncDeleteAllPasswordResetTokenByUser() throws Exception {
+        // Call the method under test
+        CompletableFuture<Void> future = passwordResetTokenService.asyncDeleteAllPasswordResetTokenByUser(user);
+
+        // Wait for the asynchronous process to complete
+        future.join(); // This will wait for the async method to complete
+
+        // Verify that all user's password reset token after a successful reset are deleted
+        verify(tokenRepository, times(1)).deleteAllByUser(eq(user));
+    }
 
 }

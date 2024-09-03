@@ -12,8 +12,11 @@ import com.fastcash.moneytransfer.model.User;
 public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Long> {
 	
     Optional<RefreshToken> findByToken(String token);
+    
     Optional<RefreshToken> findByUserAndUserAgent(User user, String userAgent);
+    
     void deleteByUserAndUserAgent(User user, String userAgent);
+    
     void deleteAllByUser(User user);
     
 }

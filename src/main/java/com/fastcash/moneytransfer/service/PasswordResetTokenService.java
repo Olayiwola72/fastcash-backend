@@ -2,10 +2,13 @@ package com.fastcash.moneytransfer.service;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fastcash.moneytransfer.constant.Constants;
 import com.fastcash.moneytransfer.dto.PasswordUpdateRequest;
@@ -17,22 +20,23 @@ import com.fastcash.moneytransfer.model.User;
 import com.fastcash.moneytransfer.repository.PasswordResetTokenRepository;
 
 @Service
+@Transactional
 public class PasswordResetTokenService {
 
-    private final PasswordResetTokenRepository tokenRepository;
+    private final PasswordResetTokenRepository passwordResetTokenRepository;
     private final UserService userService;
     private final ReloadableResourceBundleMessageSource messageSource;
     private final EmailNotifiable emailNotifiable;
     private final UserRequestMapper userRequestMapper;
     
     public PasswordResetTokenService(
-    	PasswordResetTokenRepository tokenRepository, 
+    	PasswordResetTokenRepository passwordResetTokenRepository, 
     	UserService userService,
     	ReloadableResourceBundleMessageSource messageSource,
     	EmailNotifiable emailNotifiable,
     	UserRequestMapper userRequestMapper
     ) {
-    	this.tokenRepository = tokenRepository;
+    	this.passwordResetTokenRepository = passwordResetTokenRepository;
     	this.userService = userService;
     	this.messageSource = messageSource;
     	this.emailNotifiable = emailNotifiable;
@@ -45,7 +49,7 @@ public class PasswordResetTokenService {
         String token = UUID.randomUUID().toString();
         PasswordResetToken resetToken = new PasswordResetToken(token, user, LocalDateTime.now().plusHours(Constants.PASSWORD_RESET_TOKEN_EXPIRY_HOURS));
         
-        tokenRepository.save(resetToken);  
+        passwordResetTokenRepository.save(resetToken);  
         
         emailNotifiable.sendUserPasswordResetNotification(new NotificationContext(NotificationType.EMAIL,user, token));
         
@@ -53,7 +57,7 @@ public class PasswordResetTokenService {
     }
     
     public void resetPassword(String token, String newPassword) {
-        PasswordResetToken resetToken = tokenRepository.findByToken(token)
+        PasswordResetToken resetToken = passwordResetTokenRepository.findByToken(token)
                 .orElseThrow(() -> new IllegalArgumentException(
                 	messageSource.getMessage("TokenInvalid", null, LocaleContextHolder.getLocale())
                 ));
@@ -68,7 +72,14 @@ public class PasswordResetTokenService {
         user = userRequestMapper.toUpdateUserPassword(resetToken.getUser(), new PasswordUpdateRequest(newPassword));
         userService.updatePassword(user);
         
-        tokenRepository.delete(resetToken);
+        asyncDeleteAllPasswordResetTokenByUser(user);
+    }
+    
+    @Async
+	protected CompletableFuture<Void> asyncDeleteAllPasswordResetTokenByUser(User user) {
+		// Delete all user's password reset token after a successful reset
+    	passwordResetTokenRepository.deleteAllByUser(user);
+        return CompletableFuture.completedFuture(null);
     }
     
 }
