@@ -149,9 +149,6 @@ Fast Cash can be deployed using Docker and Docker Compose, which simplifies the 
 ## **Contributing**
 Contributions to this project are welcome. Please follow the standard GitHub fork, branch, and pull request workflow. Feel free to raise issues or feature requests to enhance this project.
 
-## **License**
-N/A
-
 ## **📈 GitHub Stats**
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Olayiwola72&layout=compact)](https://github.com/Olayiwola72)
