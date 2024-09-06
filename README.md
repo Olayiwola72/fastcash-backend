@@ -66,7 +66,7 @@ To set up the project locally:
 
 The application will be accessible at: <a href="https://fast-cash.onrender.com/ " target="_blank">https://fast-cash.onrender.com/ </a>
 
-## **✅ Usage Instructions**
+## ** Usage Instructions**
 Once the application is running, open your browser and navigate to <a href="https://fast-cash.onrender.com/ " target="_blank">https://fast-cash.onrender.com/ </a>. Create a user account and start exploring the features of Fast Cash.
 
 ## **📝 API Documentation**
@@ -76,7 +76,7 @@ For detailed API information and testing, access the Swagger UI:
    <a href="https://fast-cash.onrender.com/swagger-ui" target="_blank">https://fast-cash.onrender.com/swagger-ui</a>
 </p>
 
-## **✅ Features**
+## ** Features**
 
 Fast Cash is packed with a variety of features aimed at providing a comprehensive digital banking experience:
 
@@ -94,7 +94,7 @@ Fast Cash is packed with a variety of features aimed at providing a comprehensiv
 - **Transaction List PDF and Export Actions**
 - **Responsive Web Design**
 
-## **✅ Testing**
+## ** Testing**
 To run the tests locally:
 
 - **Backend Tests**
@@ -102,7 +102,7 @@ To run the tests locally:
    ```sh
    ./mvnw test
 
-## **✅ Demo**
+## ** Demo**
 Check out the live  of Fast Cash here:
 
 <p align="center">
@@ -118,7 +118,7 @@ Check out the live  of Fast Cash here:
    />
 </p>
 
-## **✅ Docker Deployment**
+## ** Docker Deployment**
 Fast Cash can be deployed using Docker and Docker Compose, which simplifies the process of setting up and running the application in a containerized environment. Follow these instructions to get the application running using Docker.
 
 🛠 Prerequisites
@@ -146,7 +146,7 @@ Fast Cash can be deployed using Docker and Docker Compose, which simplifies the 
 
    Adjust environment variables and ports as needed for your local development or production setup.
 
-## **✅ Contributing**
+## ** Contributing**
 Contributions to this project are welcome. Please follow the standard GitHub fork, branch, and pull request workflow. Feel free to raise issues or feature requests to enhance this project.
 
 ## **License**
