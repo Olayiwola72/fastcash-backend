@@ -182,7 +182,7 @@ Contributions to this project are welcome. Please follow the standard GitHub for
    />
 </a>
 
-<a href="https://drive.google.com/file/d/10uXqISOnCIMsoLgmxOJor1kdrrflcnAy/view?usp=sharing" target="_blank">
+<a href="https://drive.google.com/file/d/119Hkfzy2sHD9gm9V5Oe4m0Xm5vamPNgt/view?usp=sharing" target="_blank">
    <img 
       align="left" 
       src="https://github.com/Olayiwola72/my-profile/blob/main/cv.png" 
